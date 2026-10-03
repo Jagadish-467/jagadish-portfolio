@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 158 100% 45%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 158 100% 45%;
+
+    --radius: 0.5rem;
+
+    --font-sans: 'Plus Jakarta Sans', Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #060606;
+    color: #ffffff;
+  }
+
+  body {
+    background-color: #060606;
+    color: #ffffff;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-sans);
+  }
+}
+
+/* Page scroll container smooth snapping */
+.portfolio-scroll-root {
+  width: 100%;
+  position: relative;
+  background-color: #060606;
+}
+
+.portfolio-section-anchor {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Keyframes for Hackathons Card Stack & Animations */
+@keyframes lightSweep {
+  0% { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(200%); }
+}
+
+@keyframes glowBloom {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+    filter: blur(5px);
+    text-shadow: 0 0 25px rgba(255, 255, 255, 1), 0 0 45px rgba(255, 255, 255, 0.8);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(0px) scale(1.02);
+    filter: blur(0px);
+    text-shadow: 0 0 25px rgba(255, 255, 255, 1), 0 0 45px rgba(255, 255, 255, 0.8), 0 0 65px rgba(0, 229, 153, 0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+    filter: blur(0px);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes filamentBloom {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+    filter: blur(5px);
+    text-shadow: 0 0 20px #00e599, 0 0 40px #00e599, 0 0 60px rgba(255, 255, 255, 0.8);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(0px) scale(1.03);
+    filter: blur(0px);
+    text-shadow: 0 0 18px #00e599, 0 0 35px rgba(0, 229, 153, 0.7), 0 0 55px #ffffff;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+    filter: blur(0px);
+    text-shadow: 0 0 6px rgba(0, 229, 153, 0.3);
+  }
+}
+
+@keyframes letterReveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+    filter: blur(3px);
+    text-shadow: none;
+  }
+  35% {
+    opacity: 1;
+    transform: translate3d(0, -0.6px, 0);
+    filter: blur(0px);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.75);
+  }
+  65% {
+    transform: translate3d(0, 0.2px, 0);
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.25);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0px);
+    text-shadow: none;
+  }
+}
+
+@keyframes letterAccentReveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+    filter: blur(3px);
+    text-shadow: none;
+  }
+  35% {
+    opacity: 1;
+    transform: translate3d(0, -0.6px, 0);
+    filter: blur(0px);
+    text-shadow: 0 0 12px #00e599, 0 0 20px rgba(0, 229, 153, 0.55);
+  }
+  65% {
+    transform: translate3d(0, 0.2px, 0);
+    text-shadow: 0 0 6px rgba(0, 229, 153, 0.35);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0px);
+    text-shadow: 0 0 4px rgba(0, 229, 153, 0.35);
+  }
+}
+
+@keyframes photoSheenSweep {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, -100%, 0) rotate(22deg);
+  }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate3d(105%, 105%, 0) rotate(22deg);
+  }
+}
+
+@keyframes hairlineSweepIn {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  20% { opacity: 1; }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Custom Cursor global suppression inside Hackathons */
+@media (pointer: fine) {
+  #hackathons.custom-cursor-enabled,
+  #hackathons.custom-cursor-enabled * {
+    cursor: none !important;
+  }
+
+  [data-cursor-dock],
+  [data-cursor-dock] * {
+    cursor: auto !important;
+  }
+}
+
+/* Contact Section Design System Utilities */
+.font-display {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.text-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.6875rem;
+}
+
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.tech-grid {
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.05) 0 1px,
+      transparent 1px 54px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.03) 0 1px,
+      transparent 1px 54px
+    );
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 30%, black 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 30%, black 0%, transparent 78%);
+}
+
+.bloom-ring {
+  box-shadow: 0 0 0 1px rgba(0, 229, 153, 0.35), 0 18px 60px -20px rgba(0, 229, 153, 0.45);
+}
+
+@keyframes beaconPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+.animate-beacon {
+  animation: beaconPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes beamSweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+.animate-sweep {
+  animation: beamSweep 1.1s linear infinite;
+}
+
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+.portfolio-section-anchor {
+  scroll-snap-align: start;
+}
+

@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Inter:wght@300;400;500;600;800&display=swap');
+
+.h-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #030303; 
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow: visible;
+}
+
+/* ------------------------------------------------
+   SUBTLE MICRO CURSOR
+   ------------------------------------------------ */
+.h-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  background-color: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+/* ------------------------------------------------
+   FILM GRAIN (Bridges Black & White themes)
+   ------------------------------------------------ */
+.h-grain {
+  position: absolute;
+  inset: -100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------
+   EDITORIAL NAVIGATION
+   ------------------------------------------------ */
+.h-nav {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 2.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.h-nav-item {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: #a1a1aa;
+  text-transform: uppercase;
+  pointer-events: auto; /* For magnetic interaction */
+}
+
+.h-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.h-dot {
+  width: 4px; height: 4px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+/* ------------------------------------------------
+   THE CENTERPIECE (Typography Layering)
+   ------------------------------------------------ */
+.h-centerpiece {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.h-title-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* 3-Layer Sandwich - Refined golden spacing around centerpiece */
+.h-title-back {
+  top: 31%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+.h-title-mid {
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 15; /* In front of image */
+}
+
+.h-title-front {
+  top: 69%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+.h-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(4rem, 11vw, 15rem);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  margin: 0;
+  text-transform: uppercase;
+  display: flex;
+}
+
+.h-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+}
+
+.h-solid {
+  color: #fff;
+}
+
+.h-italic {
+  font-family: 'Playfair Display', serif; /* Contrast font for KUMAR */
+  font-style: italic;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0;
+}
+
+.h-char-wrap {
+  overflow: hidden;
+  display: inline-block;
+  padding: 10px 0;
+  margin: -10px 0;
+}
+.h-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* ------------------------------------------------
+   THE IMAGE (Original Size & Centering)
+   ------------------------------------------------ */
+.h-image-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -260px; /* Half of 520px */
+  margin-left: -190px; /* Half of 380px */
+  width: 380px;
+  height: 520px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Float wrapper keeps the idle breathing motion independent of hover */
+.h-card-float {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  will-change: transform;
+}
+
+/* 3D card stage tilts and scales the image and frame together as one atomic unit */
+.h-card-stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Glowing emerald neon frame that strictly surrounds the portrait card */
+.h-image-frame {
+  position: absolute;
+  inset: -12px;
+  border: 1.5px solid rgba(16, 185, 129, 0.85);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4), inset 0 0 15px rgba(16, 185, 129, 0.15);
+  animation: neon-frame-pulse 3s ease-in-out infinite;
+  will-change: opacity, box-shadow;
+}
+
+@keyframes neon-frame-pulse {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.35), inset 0 0 12px rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(16, 185, 129, 0.65), inset 0 0 20px rgba(16, 185, 129, 0.25);
+    border-color: rgba(16, 185, 129, 1);
+  }
+}
+
+/* Frame corner accent brackets */
+.h-frame-corner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: #10b981;
+  pointer-events: none;
+}
+.h-frame-tl { top: -2px; left: -2px; border-top: 2px solid #10b981; border-left: 2px solid #10b981; }
+.h-frame-tr { top: -2px; right: -2px; border-top: 2px solid #10b981; border-right: 2px solid #10b981; }
+.h-frame-bl { bottom: -2px; left: -2px; border-bottom: 2px solid #10b981; border-left: 2px solid #10b981; }
+.h-frame-br { bottom: -2px; right: -2px; border-bottom: 2px solid #10b981; border-right: 2px solid #10b981; }
+
+.h-image-wrap {
+  width: 100%;
+  height: 0%; 
+  overflow: hidden;
+  border-radius: 8px;
+  will-change: height, transform;
+  position: relative;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+}
+
+.h-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: grayscale(100%) contrast(1.08);
+  will-change: transform, filter;
+}
+
+/* Interactive Glare Overlay */
+.h-glare {
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 60%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ------------------------------------------------
+   EDITORIAL FOOTER
+   ------------------------------------------------ */
+.h-footer {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  padding: 2.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.h-bio {
+  max-width: 350px;
+}
+
+.h-bio p {
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: #a1a1aa;
+  margin: 0;
+}
+
+.h-bio-right p {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  pointer-events: auto; /* For magnetic */
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .h-nav { padding: 1.5rem; }
+  .h-footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 2rem; }
+  .h-bio-right p { text-align: left; }
+  .h-image-container { 
+    width: 280px; 
+    height: 400px;
+    margin-top: -200px;
+    margin-left: -140px;
+  }
+  .h-title-back { top: 28%; }
+  .h-title-front { top: 72%; }
+}
+
+/* ------------------------------------------------
+   SCROLL INDICATOR
+   ------------------------------------------------ */
+.h-footer-center {
+  justify-content: center !important;
+}
+
+.h-scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.h-scroll-text {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #a1a1aa;
+}
+
+.h-scroll-indicator {
+  width: 1px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.h-scroll-line {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #fff;
+  animation: scrollLine 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+@keyframes scrollLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+/* ==========================================================================
+   6. RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-nav-capsule {
+    display: none;
+  }
+
+  .hero-domains-rail {
+    display: none;
+  }
+
+  .hero-statement-column {
+    top: auto;
+    bottom: 16vh;
+    left: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .hero-portrait-stage {
+    height: 75vh;
+    min-height: 480px;
+    left: 0;
+  }
+
+  .name-letter-span,
+  .name-letter-stroke-span {
+    font-size: clamp(4.5rem, 15vw, 10rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-corner-crosshair {
+    display: none;
+  }
+
+  .hero-perimeter-rail {
+    display: none;
+  }
+
+  .hero-statement-column {
+    bottom: 13vh;
+    left: 1.25rem;
+    right: 1.25rem;
+    max-width: 100%;
+  }
+
+  .hero-portrait-stage {
+    height: 65vh;
+    min-height: 400px;
+    left: 0;
+  }
+
+  .name-letter-span,
+  .name-letter-stroke-span {
+    font-size: clamp(3.4rem, 16vw, 6.2rem);
+    letter-spacing: -0.04em;
+  }
+
+  .hero-bottom-right-metadata {
+    display: none;
+  }
+
+  .hero-bottom-left-action {
+    bottom: 1.5rem;
+    left: 1.25rem;
+  }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-technical-grid,
+  .hero-portrait-stage,
+  .hero-editorial-name-layer {
+    transform: none !important;
+    transition: none !important;
+  }
+}

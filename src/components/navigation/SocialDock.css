@@ -1,0 +1,75 @@
+/* ==========================================================================
+   GLOBAL SOCIAL DOCK (PERSISTENT ACROSS EVERY SECTION)
+   - Position: Fixed on the Right Side
+   - Capsule/Pill Border with Difference Inversion
+   - Works flawlessly on dark and light backgrounds
+   ========================================================================== */
+
+.global-social-dock {
+  position: fixed;
+  right: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 0.6rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
+  mix-blend-mode: difference;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity;
+}
+
+.global-social-dock:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.35);
+}
+
+.dock-item {
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
+}
+
+.dock-item:hover {
+  transform: scale(1.18);
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.dock-separator {
+  width: 16px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.25);
+  margin: 0.15rem 0;
+}
+
+/* Tablet & Mobile Breakpoints */
+@media (max-width: 768px) {
+  .global-social-dock {
+    right: 1rem;
+    padding: 0.65rem 0.45rem;
+    gap: 0.35rem;
+  }
+
+  .dock-item {
+    width: 32px;
+    height: 32px;
+  }
+
+  .dock-separator {
+    width: 12px;
+  }
+}

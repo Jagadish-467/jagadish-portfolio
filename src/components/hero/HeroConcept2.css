@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&display=swap');
+
+.hc2-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #040404;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* GLOBAL CANVAS GRID */
+.hc2-global-grid {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* HERO LAYOUT */
+.hc2-layout {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 clamp(2rem, 5vw, 6rem);
+  z-index: 10;
+  align-items: center;
+}
+
+/* LEFT COLUMN */
+.hc2-left {
+  display: flex;
+  flex-direction: column;
+  padding-right: 4rem;
+}
+
+.hc2-tag {
+  font-family: 'Inter', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: #a1a1aa;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+}
+
+.hc2-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0 0 2.5rem 0;
+}
+
+.hc2-overflow {
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  line-height: 1.05;
+}
+
+.hc2-title-line {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 8vw, 9rem);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.hc2-italic {
+  font-style: italic;
+  font-weight: 400;
+  color: #d4d4d8;
+  padding-left: 10%; /* Elegant indent */
+}
+
+.hc2-bio {
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  max-width: 450px;
+  line-height: 1.6;
+  color: #a1a1aa;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+
+.hc2-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 1rem 2.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  border-radius: 100px;
+  width: fit-content;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hc2-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* RIGHT COLUMN (IMAGE MASK) */
+.hc2-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.hc2-arch-mask {
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 3.5 / 5;
+  /* PERFECT ARCH */
+  border-radius: 300px 300px 12px 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+  position: relative;
+  /* Subtle inner border for premium feel */
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hc2-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform, filter;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hc2-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    padding-top: 100px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .hc2-left { padding-right: 0; align-items: center; text-align: center; }
+  .hc2-italic { padding-left: 0; }
+  .hc2-arch-mask { max-width: 350px; }
+}

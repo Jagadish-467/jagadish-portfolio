@@ -1,0 +1,1468 @@
+============================================================
+                    PONNADA JAGADISH KUMAR
+                         JAGADISH
+============================================================
+
+PERSONAL DETAILS
+
+Full Name:
+Ponnada Jagadish Kumar
+
+Preferred Name:
+Jagadish
+
+Age:
+19
+
+Location:
+Vizianagaram, Andhra Pradesh, India
+
+Current Status:
+3rd Year B.Tech Computer Science & Engineering Student
+
+College:
+Lendi Institute of Engineering and Technology
+
+Branch:
+Computer Science and Engineering
+
+Minor:
+Quantum Computing
+
+
+============================================================
+                        EDUCATION
+============================================================
+
+SCHOOL
+
+Fortcity School
+Completed: 2022
+
+
+INTERMEDIATE
+
+Apex Junior College
+Completed: 2024
+
+
+UNDERGRADUATION
+
+Lendi Institute of Engineering and Technology
+
+Degree:
+B.Tech
+
+Branch:
+Computer Science and Engineering
+
+Current Year:
+3rd Year
+
+Minor:
+Quantum Computing
+
+
+============================================================
+                    WHO I AM
+============================================================
+
+I am a third-year Computer Science student, multidisciplinary
+engineer, builder, designer, problem solver and technology
+explorer.
+
+I do not restrict myself to a single area of Computer Science.
+
+I continuously explore and build across different domains,
+including:
+
+- Software Engineering
+- Artificial Intelligence
+- Machine Learning
+- Quantum Computing
+- Quantum Machine Learning
+- Distributed Systems
+- Cybersecurity
+- Cryptography
+- Computer Networks
+- Backend Engineering
+- Frontend Engineering
+- UI/UX Design
+- DevOps
+- Deployment
+- Databases
+- Local AI and LLMs
+- Systems
+- Hardware
+- Competitive Programming
+- Research
+- Space Technology
+- Rocket Science
+- Emerging Technologies
+
+My approach is to learn by building, experiment with new
+technologies, solve difficult problems and continuously expand
+my technical capabilities.
+
+
+============================================================
+                MY TECHNICAL IDENTITY
+============================================================
+
+I am not limited to being a:
+
+- Frontend Developer
+- Backend Developer
+- Full-Stack Developer
+- AI/ML Developer
+- Quantum Computing Developer
+- Designer
+- DevOps Engineer
+
+I can work across these areas depending on the requirements
+of a project.
+
+My broader identity is:
+
+MULTIDISCIPLINARY COMPUTER SCIENCE BUILDER
+
+I explore multiple areas of technology and continuously build
+projects across different domains.
+
+
+============================================================
+              AREAS I CAN WORK IN
+============================================================
+
+SOFTWARE ENGINEERING
+
+- Application development
+- System design
+- Software architecture
+- Full-stack development
+- API development
+- Database integration
+- Application deployment
+- Debugging
+- Optimization
+- Maintenance
+
+
+FRONTEND ENGINEERING
+
+- React
+- JavaScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- GSAP
+- Scroll-based animation
+- Interactive interfaces
+- Responsive design
+- Component architecture
+- Motion design
+- Modern web experiences
+
+
+FRONTEND DESIGN
+
+I can work as both a frontend engineer and a frontend designer.
+
+Areas include:
+
+- UI design
+- UX design
+- Visual hierarchy
+- Typography
+- Layout
+- Responsive design
+- Interaction design
+- Design systems
+- Motion design
+- Micro-interactions
+- Animation
+- Interactive experiences
+- Design-to-code implementation
+
+I can design an interface and then implement the actual
+frontend myself.
+
+
+BACKEND ENGINEERING
+
+- FastAPI
+- Uvicorn
+- REST APIs
+- WebSockets
+- Authentication
+- JWT
+- Backend services
+- API integration
+- Database integration
+- Real-time communication
+
+
+DATABASES
+
+- PostgreSQL
+- MySQL
+- MongoDB
+- SQLite
+
+Knowledge includes:
+
+- Relational databases
+- NoSQL databases
+- Data modeling
+- Queries
+- CRUD operations
+- Database integration
+- Application data architecture
+
+
+DEVOPS / INFRASTRUCTURE
+
+I can work across development, infrastructure and deployment.
+
+Tools and technologies include:
+
+- Git
+- GitHub
+- Docker
+- Linux
+- Containerization
+- Deployment workflows
+- Environment configuration
+- Application deployment
+- Infrastructure concepts
+- CI/CD concepts
+- CLI tooling
+
+
+============================================================
+                  PROGRAMMING LANGUAGES
+============================================================
+
+- Python
+- C
+- C++
+- Java
+- JavaScript
+- Go
+- Rust
+- SQL
+
+HTML and CSS are technologies I use for web development,
+but HTML is not considered a programming language.
+
+
+============================================================
+              DATA STRUCTURES & ALGORITHMS
+============================================================
+
+I have completed and worked with Data Structures and
+Algorithms using:
+
+- Python
+- JavaScript
+- C++
+
+Areas include:
+
+- Arrays
+- Strings
+- Linked Lists
+- Stacks
+- Queues
+- Trees
+- Graphs
+- Searching
+- Sorting
+- Recursion
+- Dynamic Programming
+- Algorithmic problem solving
+- Complexity analysis
+- Competitive programming
+
+
+============================================================
+                     PYTHON
+============================================================
+
+Python is one of my primary programming languages.
+
+I use Python for:
+
+- Data Structures
+- Algorithms
+- Machine Learning
+- Artificial Intelligence
+- Backend development
+- FastAPI
+- Automation
+- Data processing
+- Quantum Computing
+- Qiskit
+- Experimentation
+- Scripting
+
+
+============================================================
+                        C / C++
+============================================================
+
+I have worked with C and C++ for:
+
+- Data Structures
+- Algorithms
+- Competitive programming
+- Systems concepts
+- Networking
+- Bit manipulation
+- Encryption/decryption concepts
+- Hackathon development
+
+
+============================================================
+                         JAVA
+============================================================
+
+I have studied and worked with:
+
+- Object-Oriented Programming
+- Classes and Objects
+- Inheritance
+- Polymorphism
+- Encapsulation
+- Abstraction
+- Method Overloading
+- Method Overriding
+- Constructors
+- Exception Handling
+- Collections
+- Generics
+- Multithreading
+- Thread lifecycle
+- Thread priority
+- File I/O
+- Serialization
+- AWT
+- Swing
+- Cloneable
+- Interfaces
+
+
+============================================================
+                          GO
+============================================================
+
+I know Go and explore it for:
+
+- Backend systems
+- Networking
+- Concurrent applications
+- Systems programming
+- High-performance services
+
+
+============================================================
+                         RUST
+============================================================
+
+I know Rust and explore it for:
+
+- Systems programming
+- Performance-oriented applications
+- Memory-safe software
+- Low-level development
+- Infrastructure
+- Backend systems
+
+
+============================================================
+                 ARTIFICIAL INTELLIGENCE
+============================================================
+
+Areas explored:
+
+- Artificial Intelligence
+- Machine Learning
+- Classical ML
+- Classification
+- Support Vector Machines
+- Entity Resolution
+- Text similarity
+- Candidate generation
+- Predictive systems
+- AI-powered applications
+- Local AI
+- Local LLMs
+
+
+TECHNOLOGIES
+
+- Python
+- NumPy
+- Pandas
+- Scikit-learn
+- TensorFlow
+- Qiskit
+- Qiskit Machine Learning
+
+
+============================================================
+                 LOCAL AI / LOCAL LLMS
+============================================================
+
+I can work with AI models locally and am interested in:
+
+- Local LLMs
+- Local inference
+- Open models
+- Model experimentation
+- Local AI applications
+- Model deployment
+- Resource-efficient AI
+- AI integration
+- Running models locally instead of relying exclusively
+  on cloud APIs
+
+
+============================================================
+                  QUANTUM COMPUTING
+============================================================
+
+Quantum Computing is not simply an interest or hobby for me.
+
+Quantum Computing is my academic minor and an active technical
+area that I continuously study, build projects in and explore.
+
+I have proficient knowledge of Quantum Computing concepts and
+can discuss and work with the technology at a technical level.
+
+
+AREAS
+
+- Quantum Computing fundamentals
+- Qubits
+- Quantum states
+- Quantum gates
+- Quantum circuits
+- Quantum measurement
+- Quantum algorithms
+- Quantum Machine Learning
+- Quantum kernels
+- Quantum feature maps
+- Quantum SVM
+- Hybrid quantum-classical systems
+- Quantum compilation
+- Distributed quantum computing
+- Quantum architecture
+- Topology-aware compilation
+- Quantum experiment management
+
+
+TOOLS
+
+- Qiskit
+- Qiskit Machine Learning
+- Python
+
+
+QUANTUM PROJECT WORK
+
+I continuously work on Quantum Computing projects including:
+
+- QLASSIFY
+- Distributed Quantum Compiler
+- Quantum Visualizer
+- Quantum ML experimentation
+- Quantum/classical benchmarking
+- Distributed quantum computing concepts
+
+
+============================================================
+                    CYBERSECURITY
+============================================================
+
+Areas explored:
+
+- Cybersecurity
+- Network Security
+- Secure Communication
+- Cryptography
+- End-to-End Encryption
+- Predictive Cybersecurity
+- Network Attack Forecasting
+- Threat Modeling
+- Security Architecture
+- WebSocket Security
+- WebRTC Security
+
+
+CRYPTOGRAPHIC CONCEPTS
+
+- X3DH
+- Double Ratchet
+- Sender Keys
+- Argon2id
+- HKDF
+
+
+============================================================
+                ENCRYPTION / DECRYPTION
+============================================================
+
+I have designed encryptor and decryptor implementations using
+bit-changing / bit-manipulation techniques.
+
+Areas explored:
+
+- Bit manipulation
+- Binary transformations
+- Bit-level operations
+- Reversible transformations
+- Encryption concepts
+- Decryption concepts
+- Data transformation
+
+
+============================================================
+                      NETWORKING
+============================================================
+
+Areas:
+
+- Computer Networks
+- LAN
+- VLAN
+- Cisco Packet Tracer
+- Network Architecture
+- Network Security
+- WebSockets
+- STUN
+- TURN
+- Self-hosted networking
+- Real-time communication
+
+
+============================================================
+                     DEVOPS
+============================================================
+
+I am comfortable working beyond application development and
+can handle infrastructure and deployment requirements.
+
+Tools:
+
+- Git
+- GitHub
+- Docker
+- Linux
+- CLI
+- Database systems
+- Deployment tooling
+- Containerization
+- Environment management
+- Application infrastructure
+
+
+============================================================
+                  DESIGN & CREATIVE TOOLS
+============================================================
+
+I can work with design tools such as:
+
+- Figma
+- UI/UX design tools
+- Prototyping tools
+- Design systems
+- Visual design workflows
+
+
+I can combine design and engineering:
+
+DESIGN
+    ↓
+PROTOTYPE
+    ↓
+FRONTEND
+    ↓
+BACKEND
+    ↓
+DATABASE
+    ↓
+AI / SYSTEMS
+    ↓
+DOCKER
+    ↓
+DEPLOYMENT
+
+
+============================================================
+                 MODERN WEB ANIMATION
+============================================================
+
+I work with modern animation and interaction technologies
+including:
+
+- GSAP
+- Framer Motion
+- Scroll.js
+- Scroll-based animation
+- Parallax
+- Smooth scrolling
+- Page transitions
+- Micro-interactions
+- Magnetic interactions
+- Cursor interactions
+- Motion-based UI
+- Cinematic transitions
+- Interactive storytelling
+- 3D web experiences
+
+
+============================================================
+                       MAJOR PROJECTS
+============================================================
+
+
+01 — ONLAN
+
+ONLAN is a self-hosted, LAN-first communication platform
+focused on private and secure communication.
+
+FEATURES
+
+- End-to-end encrypted messaging
+- Individual chats
+- Group chats
+- Voice calls
+- Video calls
+- WebRTC
+- Encrypted file sharing
+- Push notifications
+- PWA/mobile support
+- Admin panel
+- LAN-first communication
+- OffLAN communication
+
+
+FRONTEND
+
+- React 19
+- Vite 7
+- Tailwind CSS v4
+- TanStack Router
+- TanStack Query
+- Framer Motion
+- Lucide React
+
+
+BACKEND
+
+- FastAPI
+- Uvicorn
+- PostgreSQL
+- psycopg2
+- Passlib
+- Starlette Sessions
+- Pillow
+- pywebpush
+- aiofiles
+- cryptography
+
+
+SECURITY
+
+- TweetNaCl
+- @noble/ciphers
+- @noble/hashes
+- X3DH
+- Double Ratchet
+- Sender Keys
+- Argon2id
+- HKDF
+
+
+COMMUNICATION
+
+- WebRTC
+- STUN
+- TURN / coturn
+- WebSockets
+
+
+OFFLAN
+
+ONLAN includes an OffLAN concept that extends communication
+beyond the local network using an outbound-only WebSocket tunnel.
+
+
+------------------------------------------------------------
+
+02 — QLASSIFY
+
+QLASSIFY is a quantum/classical machine-learning
+experimentation and benchmarking framework.
+
+The project explores classical and quantum approaches to
+machine learning and evolved toward a distributed Quantum ML
+experiment management framework.
+
+AREAS
+
+- Classical SVM
+- Quantum SVM
+- Hybrid Quantum-Classical ML
+- Quantum kernels
+- Experiment management
+- Benchmarking
+- Distributed execution
+- Reproducibility
+
+
+TECHNOLOGIES
+
+- Python
+- FastAPI
+- Ray
+- PostgreSQL
+- SQLite
+- Docker
+- Qiskit
+- Qiskit Machine Learning
+
+
+------------------------------------------------------------
+
+03 — DISTRIBUTED QUANTUM COMPILER
+
+A project focused on:
+
+- Quantum compilation
+- Distributed quantum computing
+- Quantum circuits
+- Quantum architectures
+- Circuit transformation
+- Topology-aware compilation
+
+
+------------------------------------------------------------
+
+04 — QUANTUM VISUALIZER
+
+An interactive project for visualizing quantum computing
+concepts and quantum computation.
+
+
+------------------------------------------------------------
+
+05 — CLEAR SKYS
+
+Clear Skys is a developed AI/GIS-based sustainable travel
+assistant.
+
+AREAS
+
+- Sustainable tourism
+- Air quality
+- AQI
+- AI travel assistance
+- GIS
+- Satellite data
+- Destination discovery
+- Personalized travel filtering
+
+
+------------------------------------------------------------
+
+06 — FINCOPILOT
+
+FinCopilot was developed for the LNIT Hackathon.
+
+It is an AI-powered personal finance application focused
+particularly on students.
+
+AREAS
+
+- Budget planning
+- Financial organization
+- Scholarship discovery
+- Personal finance assistance
+
+TECHNOLOGIES
+
+- React
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- Framer Motion
+- React Query
+- Capacitor
+- FastAPI
+- PostgreSQL
+- SQLAlchemy
+- Alembic
+- JWT
+
+
+------------------------------------------------------------
+
+07 — LEARNYOURWAY / LYW
+
+LearnYourWay was developed for the AU Hackathon.
+
+It is a learning/teaching platform focused on improving
+the learning experience for students.
+
+TEAM
+
+- Jagadish
+- Rishik
+- Subhash
+
+
+------------------------------------------------------------
+
+08 — SAARTHI
+
+Saarthi is another project/application developed as part of
+my broader project work.
+
+
+------------------------------------------------------------
+
+09 — AMAZON ML CHALLENGE 2026
+
+I participated in the Amazon ML Challenge 2026, working on
+a large-scale Business Entity Resolution problem.
+
+The task involved matching noisy business records from
+multiple sources to unified real-world entities.
+
+TECHNIQUES
+
+- Text normalization
+- Accent stripping
+- Indic-script transliteration
+- Learned transliteration dictionaries
+- Legal-form normalization
+- Country-specific address normalization
+- TF-IDF
+- Character n-grams
+- Address-token matching
+- Sparse candidate generation
+- Blocking
+- Candidate ranking
+
+The competition involved tens of millions of records.
+
+CONSTRAINTS
+
+- No external data
+- Open models
+- Model-size restrictions
+- Local computation
+- MacBook Pro
+- Apple MPS
+
+REPORTED RESULT
+
+- Final public score: approximately 0.9863 Macro F0.5
+- Best rank: 135
+
+
+------------------------------------------------------------
+
+10 — TRACE
+
+TRACE stands for:
+
+Temporal Risk & Attack Chain Estimation
+
+A predictive cybersecurity system focused on forecasting
+potential network compromises before they occur.
+
+AREAS
+
+- Network traffic
+- Temporal modeling
+- Attack chains
+- Risk estimation
+- Predictive defense
+- Artificial Intelligence
+- Offline-first architecture
+
+
+------------------------------------------------------------
+
+11 — SMARTBRANCH 360
+
+A Cisco Packet Tracer networking project.
+
+NETWORK
+
+- Employee VLAN
+- Guest VLAN
+- Server VLAN
+- Management VLAN
+
+Also explored a Python-based configuration validation tool
+for parsing router configurations and suggesting Cisco IOS
+remediation commands.
+
+
+============================================================
+                COMPETITIVE PROGRAMMING
+============================================================
+
+LEETCODE
+
+- 425+ problems solved
+- Approximately 3 lakh global rank
+
+I continuously work on:
+
+- Data Structures
+- Algorithms
+- Problem solving
+- Optimization
+- Competitive programming
+
+
+============================================================
+                    HACKATHON JOURNEY
+============================================================
+
+FIRST HACKATHON
+
+TECHNIVERSE 2K25
+
+This was my first hackathon.
+
+The event included a DSA screening round with 8 problems.
+
+I solved all 8 problems and reached the final development
+round.
+
+FINAL PROJECT:
+
+Command-Line Food Delivery Management System
+
+LANGUAGE:
+
+C
+
+DEVELOPMENT TIME:
+
+Approximately 12 hours
+
+RESULT:
+
+Reached the finals.
+
+
+------------------------------------------------------------
+
+SECOND HACKATHON
+
+AU HACKATHON
+
+PROJECT:
+
+LearnYourWay (LYW)
+
+FOCUS:
+
+Student learning and education.
+
+
+------------------------------------------------------------
+
+LNIT HACKATHON
+
+PROJECT:
+
+FinCopilot
+
+FOCUS:
+
+AI-powered personal finance for students.
+
+RESULT:
+
+Reached the final 10 teams at LNIT 2026.
+
+
+------------------------------------------------------------
+
+UNSTOP ADOBE HACKATHON
+
+Participated in the Unstop Adobe Hackathon and was selected
+for the final round.
+
+
+------------------------------------------------------------
+
+SMART INDIA HACKATHON 2025
+
+Participated in SIH 2025 and reached the college-level
+finalist stage.
+
+
+------------------------------------------------------------
+
+CODE BIDDING
+
+Code Bidding is a separate competition from my hackathon
+journey.
+
+RESULT:
+
+4th Place
+
+TEAM:
+
+NVIDIA
+
+
+------------------------------------------------------------
+
+OTHER EVENTS
+
+I have also participated in many additional hackathons,
+technical competitions, coding events and challenges.
+
+
+============================================================
+                  HACKATHON ORDER
+============================================================
+
+1. Techniverse 2K25
+2. AU Hackathon
+3. LNIT Hackathon
+4. Unstop Adobe Hackathon
+5. Smart India Hackathon 2025
+6. Many additional hackathons and technical competitions
+
+
+============================================================
+                   SPACE & AEROSPACE
+============================================================
+
+I have a strong personal interest in:
+
+- Space
+- Rocket Science
+- Aerospace
+- Space Technology
+- Rocket Systems
+- Propulsion concepts
+- Space exploration
+- Emerging aerospace technologies
+
+I have independently studied and explored multiple concepts
+related to rocket science and aerospace.
+
+Space and aerospace are personal technical interests that I
+continue to explore alongside Computer Science.
+
+
+============================================================
+                    HARDWARE / SYSTEMS
+============================================================
+
+RASPBERRY PI
+
+I have explored:
+
+- Raspberry Pi 5
+- Raspberry Pi OS
+- Ubuntu
+- Networking
+- Pi-hole
+- Self-hosted services
+- Hardware/OS troubleshooting
+
+
+MACBOOK PRO
+
+Used for:
+
+- Software development
+- Machine Learning
+- Quantum ML
+- Local LLM experimentation
+- AI workloads
+- Competition workloads
+- Apple MPS
+
+
+============================================================
+                DEVELOPER TOOLING
+============================================================
+
+I am comfortable working with modern Computer Science and
+software development tools including:
+
+- Git
+- GitHub
+- Docker
+- Linux
+- VS Code
+- Terminal / CLI
+- Postman
+- Package managers
+- Build tools
+- Database tools
+- API development tools
+- Debugging tools
+- Development environments
+
+
+============================================================
+                  CONTINUOUS LEARNING
+============================================================
+
+I continuously improve my technical skills.
+
+I regularly explore:
+
+- New programming languages
+- New frameworks
+- New libraries
+- New AI models
+- New development tools
+- New infrastructure technologies
+- New design tools
+- New research areas
+- Emerging technologies
+- New Computer Science concepts
+
+My technology stack is not fixed.
+
+I continuously expand the domains I can work in.
+
+
+============================================================
+                 HOW I APPROACH TECHNOLOGY
+============================================================
+
+LEARN
+  ↓
+UNDERSTAND
+  ↓
+EXPERIMENT
+  ↓
+BUILD
+  ↓
+TEST
+  ↓
+BREAK
+  ↓
+DEBUG
+  ↓
+IMPROVE
+  ↓
+REPEAT
+
+
+============================================================
+                    MY RANGE
+============================================================
+
+DESIGN
+    ↓
+UI / UX
+    ↓
+FRONTEND
+    ↓
+BACKEND
+    ↓
+DATABASE
+    ↓
+AI / ML
+    ↓
+QUANTUM COMPUTING
+    ↓
+SECURITY
+    ↓
+NETWORKING
+    ↓
+SYSTEMS
+    ↓
+DOCKER / INFRASTRUCTURE
+    ↓
+DEVOPS
+    ↓
+DEPLOYMENT
+
+
+But my interests are not restricted to this stack.
+
+I continuously explore other areas of Computer Science,
+technology and science as well.
+
+
+============================================================
+                PROFESSIONAL STRENGTHS
+============================================================
+
+- Multidisciplinary technical knowledge
+- Full application lifecycle understanding
+- Strong frontend development
+- Strong frontend design
+- UI/UX capability
+- Backend development
+- Database knowledge
+- AI/ML knowledge
+- Proficient Quantum Computing knowledge
+- Security and cryptography knowledge
+- Networking knowledge
+- DevOps and deployment capability
+- Competitive programming
+- Problem solving
+- Rapid prototyping
+- Hackathon development
+- Local AI experimentation
+- Continuous learning
+- Technical curiosity
+- Ability to learn unfamiliar technologies
+
+
+============================================================
+                PERSONAL TECHNICAL CHARACTER
+============================================================
+
+CURIOUS
+
+I enjoy understanding how technologies work rather than
+only learning how to use them.
+
+
+MULTIDISCIPLINARY
+
+I intentionally explore different domains instead of
+restricting myself to one specialization.
+
+
+BUILDER
+
+I prefer turning concepts into working projects.
+
+
+EXPERIMENTAL
+
+I enjoy trying unfamiliar technologies and exploring whether
+they can solve a particular problem.
+
+
+COMPETITIVE
+
+Hackathons, coding competitions, LeetCode and ML challenges
+are an important part of my learning journey.
+
+
+DESIGN-ORIENTED
+
+I care about how software looks, feels and interacts with
+users, not only how it works internally.
+
+
+TECHNICALLY CURIOUS
+
+My interests extend from low-level concepts and security to
+AI, quantum computing, distributed systems and space.
+
+
+CONTINUOUSLY LEARNING
+
+I treat my technical capabilities as continuously evolving
+rather than fixed.
+
+
+============================================================
+                 DESIGN PHILOSOPHY
+============================================================
+
+I do not want a generic developer portfolio.
+
+I prefer:
+
+- Strong visual identity
+- Experimental design
+- Premium interfaces
+- Cinematic transitions
+- Modern typography
+- Interactive experiences
+- Real information as the visual language
+- Sophisticated animation
+- High-quality frontend implementation
+- Distinctive storytelling
+
+
+I do not want:
+
+- Generic developer portfolio templates
+- Generic hacker aesthetics
+- Fake terminal interfaces
+- Fake system-status gimmicks
+- Artificial technical jargon
+- Generic AI branding
+
+
+============================================================
+                    CORE DOMAINS
+============================================================
+
+SOFTWARE ENGINEERING
+
+ARTIFICIAL INTELLIGENCE
+
+MACHINE LEARNING
+
+QUANTUM COMPUTING
+
+QUANTUM MACHINE LEARNING
+
+DISTRIBUTED SYSTEMS
+
+CYBERSECURITY
+
+CRYPTOGRAPHY
+
+COMPUTER NETWORKS
+
+FULL-STACK ENGINEERING
+
+FRONTEND ENGINEERING
+
+FRONTEND DESIGN
+
+UI / UX
+
+DATABASES
+
+DEVOPS
+
+DEPLOYMENT
+
+LOCAL AI / LLMS
+
+HARDWARE
+
+COMPETITIVE PROGRAMMING
+
+SYSTEM DESIGN
+
+MOTION DESIGN
+
+SPACE TECHNOLOGY
+
+ROCKET SCIENCE
+
+RESEARCH
+
+EMERGING TECHNOLOGIES
+
+
+============================================================
+                  PERSONAL PHILOSOPHY
+============================================================
+
+I learn by building.
+
+I don't want to limit myself to a single specialization.
+
+I enjoy moving between different areas of technology,
+understanding new concepts, building systems around them,
+solving difficult problems and continuously improving.
+
+My interests can move from frontend design to backend
+systems, from cryptography to quantum computing, from local
+AI to networking, and from software engineering to
+aerospace and space technology.
+
+The common thread is curiosity and the desire to understand,
+build and improve.
+
+
+============================================================
+                     SHORT BIO
+============================================================
+
+I'm Jagadish, a third-year Computer Science student with a
+minor in Quantum Computing. I build and explore across
+software engineering, AI/ML, quantum computing, cybersecurity,
+distributed systems, networking, frontend design, local AI,
+DevOps and emerging technologies. I learn by building,
+participate in hackathons and competitions, and continuously
+expand the areas I can work in. Beyond Computer Science, I'm
+also deeply interested in space, aerospace and rocket science.
+
+
+============================================================
+                  PORTFOLIO BIO
+============================================================
+
+I'm Jagadish — a Computer Science student, engineer,
+designer and builder with a minor in Quantum Computing.
+
+I don't stay within one technical domain. I work across
+software, AI/ML, quantum computing, cybersecurity,
+distributed systems, networking, frontend engineering,
+design, local AI, DevOps and deployment.
+
+I enjoy understanding how things work, building what I learn,
+solving difficult problems and continuously exploring what
+comes next.
+
+
+============================================================
+                  SHORT INTRODUCTION
+============================================================
+
+Computer Science student.
+Quantum Computing minor.
+Engineer.
+Designer.
+Builder.
+Problem solver.
+Constantly exploring.
+
+
+============================================================
+                   ONE-LINE IDENTITY
+============================================================
+
+I explore across disciplines, build across the stack, and
+continuously learn whatever comes next.
+
+
+============================================================
+                  CORE WORDS
+============================================================
+
+BUILD
+
+EXPLORE
+
+SOLVE
+
+DESIGN
+
+EXPERIMENT
+
+LEARN
+
+COMPETE
+
+ENGINEER
+
+RESEARCH
+
+IMPROVE
+
+REPEAT
+============================================================

@@ -1,0 +1,23 @@
+.autograph-loader-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #040405; /* Deep black matching hero */
+  z-index: 9999;
+}
+
+.autograph-svg {
+  width: min(90vw, 400px);
+  height: 200px;
+  filter: drop-shadow(0 0 16px rgba(0, 229, 153, 0.25));
+}
+
+.autograph-path {
+  fill: transparent;
+  stroke: #00e599;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

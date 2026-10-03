@@ -1,0 +1,401 @@
+/* ==========================================================================
+   PORTFOLIO EDITORIAL HERO (COMPUTER SCIENCE & SYSTEMS BUILDER IDENTITY)
+   SOURCE OF TRUTH: HACKATHONS SECTION AESTHETIC
+   ========================================================================== */
+
+/* 1. Root Section Wrapper */
+.portfolio-viewport-root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  background-color: #040405;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #ffffff;
+}
+
+/* 2. Main Stage Canvas Container */
+.portfolio-canvas-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #040405;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Barely-visible technical grid (Restrained Archival Opacity ~0.025) */
+.hero-technical-grid {
+  position: absolute;
+  inset: -40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 54px 54px;
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  will-change: transform;
+}
+
+/* Subtle, restrained studio lighting behind portrait */
+.ambient-studio-spotlight {
+  position: absolute;
+  top: 45%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  width: min(75vw, 840px);
+  height: min(65vh, 620px);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 229, 153, 0.035) 0%,
+    rgba(255, 255, 255, 0.015) 45%,
+    transparent 75%
+  );
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Architectural Corner Crosshairs (+) from Hackathons spec */
+.hero-corner-crosshair {
+  position: absolute;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.28);
+  pointer-events: none;
+  z-index: 10;
+  user-select: none;
+}
+
+/* Perimeter Hairline Guide Rails */
+.hero-perimeter-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.035);
+  pointer-events: none;
+  z-index: 8;
+}
+
+.rail-left {
+  left: clamp(1.2rem, 3.5vw, 3.5rem);
+}
+
+.rail-right {
+  right: clamp(1.2rem, 3.5vw, 3.5rem);
+}
+
+/* ==========================================================================
+   3. HEADER NAVIGATION
+   ========================================================================== */
+.hero-editorial-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+  z-index: 50;
+  pointer-events: auto;
+}
+
+.hero-brand-button {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.hero-plus-icon {
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* Center Capsule Navigation */
+.hero-nav-capsule {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 4px 8px;
+  border-radius: 9999px;
+  backdrop-filter: blur(14px);
+  gap: 0.5rem;
+}
+
+.nav-item {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  letter-spacing: 0.08em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-item.active {
+  color: #00e599;
+  background: rgba(0, 229, 153, 0.06);
+}
+
+/* ==========================================================================
+   4. CENTER STAGE: SPATIAL MULTI-PLANE TYPOGRAPHY & PORTRAIT
+   ========================================================================== */
+.hero-center-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Subtle Ambient Halo */
+.hero-subject-ambient-halo {
+  position: absolute;
+  bottom: 22%;
+  left: 54%;
+  transform: translateX(-50%);
+  width: min(70vw, 760px);
+  height: min(58vh, 540px);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(0, 229, 153, 0.035) 45%,
+    transparent 75%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Spatial Name Typography (Common styles for Layer 10 and Layer 30) */
+.hero-editorial-name-layer {
+  position: absolute;
+  top: clamp(14vh, 22vh, 28vh);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.name-letter-span,
+.name-letter-stroke-span {
+  display: block;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(5.5rem, 16vw, 17.5rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+/* Layer 10: Behind-Subject Solid Filled Typography */
+.hero-name-behind {
+  z-index: 10;
+}
+
+.name-letter-span {
+  color: #ffffff;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 40px rgba(0, 0, 0, 0.9));
+}
+
+/* Layer 20: Isolated Transparent Silhouette Portrait */
+.hero-portrait-stage {
+  position: relative;
+  z-index: 20;
+  height: min(92vh, 920px);
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: auto;
+  left: 3vw; /* Positioned center-right as specified */
+}
+
+.hero-silhouette-cutout-img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 90vw;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.95)) brightness(0.97) contrast(1.05);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Bottom Dissolve Feather: Seamlessly melts the bottom edge into pure black */
+.hero-portrait-ground-feather {
+  position: absolute;
+  bottom: 0;
+  left: -25vw;
+  right: -25vw;
+  height: 110px;
+  background: linear-gradient(to top, #040405 18%, rgba(4, 4, 5, 0.85) 60%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Layer 30: Spatial Hairline Outline Stroke in Front of Portrait */
+.hero-name-front {
+  z-index: 30;
+}
+
+.name-letter-stroke-span {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.32);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   5. FOREGROUND EDITORIAL CONTENT OVERLAY (Z-Index: 35)
+   ========================================================================== */
+.hero-foreground-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+}
+
+/* Mid-Left Supporting Statement */
+.hero-statement-column {
+  position: absolute;
+  top: clamp(34%, 39vh, 46%);
+  left: clamp(1.5rem, 5vw, 5rem);
+  max-width: min(90vw, 440px);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.85);
+}
+
+/* Horizontal Technical Domain Rail */
+.hero-domains-rail {
+  position: absolute;
+  bottom: clamp(5.4rem, 11vh, 7.2rem);
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.service-domain-chip {
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* Bottom Left Scroll Action */
+.hero-bottom-left-action {
+  position: absolute;
+  bottom: clamp(1.6rem, 3.8vh, 2.6rem);
+  left: clamp(1.5rem, 5vw, 5rem);
+}
+
+.scroll-cue-btn {
+  outline: none;
+}
+
+/* Bottom Right Footer Metadata */
+.hero-bottom-right-metadata {
+  position: absolute;
+  bottom: clamp(1.6rem, 3.8vh, 2.6rem);
+  right: clamp(1.5rem, 5vw, 5rem);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-nav-capsule {
+    display: none;
+  }
+
+  .hero-domains-rail {
+    display: none;
+  }
+
+  .hero-statement-column {
+    top: auto;
+    bottom: 16vh;
+    left: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .hero-portrait-stage {
+    height: 75vh;
+    min-height: 480px;
+    left: 0;
+  }
+
+  .name-letter-span,
+  .name-letter-stroke-span {
+    font-size: clamp(4.5rem, 15vw, 10rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-corner-crosshair {
+    display: none;
+  }
+
+  .hero-perimeter-rail {
+    display: none;
+  }
+
+  .hero-statement-column {
+    bottom: 13vh;
+    left: 1.25rem;
+    right: 1.25rem;
+    max-width: 100%;
+  }
+
+  .hero-portrait-stage {
+    height: 65vh;
+    min-height: 400px;
+    left: 0;
+  }
+
+  .name-letter-span,
+  .name-letter-stroke-span {
+    font-size: clamp(3.4rem, 16vw, 6.2rem);
+    letter-spacing: -0.04em;
+  }
+
+  .hero-bottom-right-metadata {
+    display: none;
+  }
+
+  .hero-bottom-left-action {
+    bottom: 1.5rem;
+    left: 1.25rem;
+  }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-technical-grid,
+  .hero-portrait-stage,
+  .hero-editorial-name-layer {
+    transform: none !important;
+    transition: none !important;
+  }
+}
