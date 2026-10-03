@@ -3,6 +3,7 @@
    - Background: Deep Void Black (#060606)
    - Accents: Multi-color Authentic Tech Logos & Emerald (#10b981)
    - Kinetic Multi-Track Marquees (Pause on Hover)
+   - Architectural Capability Pillars Grid (Fills void with authentic depth)
    ========================================================================== */
 
 .skills-section-root {
@@ -10,19 +11,18 @@
   color: #ffffff;
   position: relative;
   overflow: hidden;
-  min-height: 90vh;
-  padding: 7rem 0 8rem;
+  padding: 5rem 0 4.5rem;
 }
 
 @media (min-width: 768px) {
   .skills-section-root {
-    padding: 8rem 0 10rem;
+    padding: 6rem 0 5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .skills-section-root {
-    padding: 9rem 0 11rem;
+    padding: 6.5rem 0 5.5rem;
   }
 }
 
@@ -75,7 +75,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 0.95rem 0;
+  padding: 0.85rem 0;
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
@@ -114,7 +114,7 @@
   display: inline-flex;
   align-items: center;
   gap: 1.15rem;
-  padding: 0.9rem 1.95rem 0.9rem 1.05rem;
+  padding: 0.85rem 1.95rem 0.85rem 1.05rem;
   border-radius: 9999px;
   background: rgba(18, 18, 24, 0.9);
   border: 1.5px solid rgba(255, 255, 255, 0.12);
@@ -156,7 +156,7 @@
 
 .skill-name {
   font-family: 'Inter', sans-serif;
-  font-size: 1.18rem;
+  font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -170,4 +170,60 @@
   letter-spacing: 0.08em;
   margin-top: 0.2rem;
   display: block;
+}
+
+/* ==========================================================================
+   ARCHITECTURAL CAPABILITY PILLARS MATRIX
+   ========================================================================== */
+.skills-domain-card {
+  background: rgba(18, 18, 24, 0.75);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 1.65rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skills-domain-card:hover {
+  border-color: var(--pillar-accent, #10b981);
+  background: rgba(26, 26, 36, 0.95);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 28px rgba(255, 255, 255, 0.06);
+  transform: translateY(-4px);
+}
+
+.skills-pillar-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.skills-domain-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.22rem 0.55rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.skills-domain-card:hover .skills-domain-tag {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
 }

@@ -231,3 +231,60 @@ export const CLogo: React.FC<LogoProps> = ({ size = 22, className = '' }) => (
     <path fill="#FFFFFF" d="M78 42c-4-4.2-9.6-6.6-15.8-6.6-13.2 0-23.8 10.6-23.8 23.8v9.6C38.4 82 49 92.6 62.2 92.6c6.2 0 11.8-2.4 15.8-6.6l7.4 7.4c-6 6.2-14.4 9.8-23.2 9.8C43.2 103.2 28 88 28 68.8v-9.6C28 40 43.2 24.8 62.2 24.8c8.8 0 17.2 3.6 23.2 9.8L78 42z"/>
   </svg>
 );
+
+// 25. CISCO (Official Bridge Icon)
+export const CiscoLogo: React.FC<LogoProps> = ({ size = 22, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 128 128" className={className}>
+    <rect width="128" height="128" rx="24" fill="#049FD9" />
+    <g fill="#FFFFFF">
+      <rect x="20" y="56" width="8" height="32" rx="4" />
+      <rect x="36" y="44" width="8" height="44" rx="4" />
+      <rect x="52" y="32" width="8" height="56" rx="4" />
+      <rect x="68" y="32" width="8" height="56" rx="4" />
+      <rect x="84" y="44" width="8" height="44" rx="4" />
+      <rect x="100" y="56" width="8" height="32" rx="4" />
+    </g>
+  </svg>
+);
+
+// 26. RASPBERRY PI (Official Raspberry Red)
+export const RaspberryPiLogo: React.FC<LogoProps> = ({ size = 22, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 128 128" className={className}>
+    <circle cx="64" cy="64" r="58" fill="#C51A4A"/>
+    <circle cx="48" cy="46" r="10" fill="#FFFFFF"/>
+    <circle cx="80" cy="46" r="10" fill="#FFFFFF"/>
+    <circle cx="64" cy="58" r="12" fill="#FFFFFF"/>
+    <circle cx="44" cy="74" r="10" fill="#FFFFFF"/>
+    <circle cx="84" cy="74" r="10" fill="#FFFFFF"/>
+    <circle cx="64" cy="86" r="11" fill="#FFFFFF"/>
+    <path fill="#6CC04A" d="M64 16c-6 0-12 6-12 12s12 10 12 10 12-4 12-10-6-12-12-12z"/>
+  </svg>
+);
+
+// 27. LEETCODE (Official Gold / White)
+export const LeetCodeLogo: React.FC<LogoProps> = ({ size = 22, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 128 128" className={className}>
+    <circle cx="64" cy="64" r="60" fill="#262626"/>
+    <path fill="#FFA116" d="M82 42.4L54.6 69.8c-2.3 2.3-6.1 2.3-8.5 0L38 61.7c-4.4-4.4-4.4-11.6 0-16 4.4-4.4 11.6-4.4 16 0l4.2 4.2 8.5-8.5-4.2-4.2c-9.1-9.1-23.9-9.1-33 0s-9.1 23.9 0 33l8.1 8.1c6.8 6.8 17.8 6.8 24.6 0L89 50.8l-7-8.4z"/>
+    <path fill="#FFFFFF" d="M96 74H58v10h38c2.8 0 5-2.2 5-5s-2.2-5-5-5z"/>
+  </svg>
+);
+
+// 28. CRYPTOGRAPHY / SECURITY SHIELD (Emerald Shield)
+export const SecurityShieldLogo: React.FC<LogoProps> = ({ size = 22, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 128 128" className={className}>
+    <circle cx="64" cy="64" r="60" fill="#064E3B"/>
+    <path fill="#10B981" d="M64 22L32 36v34c0 24.8 13.6 42.3 32 48 18.4-5.7 32-23.2 32-48V36L64 22z"/>
+    <circle cx="64" cy="58" r="8" fill="#FFFFFF"/>
+    <rect x="58" y="58" width="12" height="16" rx="2" fill="#FFFFFF"/>
+  </svg>
+);
+
+// 29. APPLE MPS / METAL (Silicon Hardware)
+export const AppleMPSLogo: React.FC<LogoProps> = ({ size = 22, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 128 128" className={className}>
+    <circle cx="64" cy="64" r="60" fill="#1C1C1E"/>
+    <path fill="#A2AAAD" d="M79.2 64.6c-.1-11.4 9.3-16.9 9.8-17.2-5.3-7.8-13.6-8.8-16.6-9-7.1-.7-13.8 4.2-17.4 4.2-3.6 0-9.1-4.1-15-4-7.7.1-14.8 4.5-18.8 11.4-8 13.8-2 34.3 5.7 45.5 3.8 5.5 8.3 11.6 14.3 11.4 5.7-.2 7.9-3.7 14.8-3.7 6.9 0 8.8 3.7 14.8 3.6 6.1-.1 10-5.5 13.7-11 4.4-6.3 6.1-12.5 6.2-12.8-.2-.1-11.5-4.4-11.5-18.4zM71.4 33.2c3.1-3.8 5.2-9.1 4.6-14.4-4.5.2-9.9 3-13.1 6.8-2.8 3.2-5.3 8.6-4.6 13.8 5 .4 10-2.4 13.1-6.2z"/>
+  </svg>
+);
+
