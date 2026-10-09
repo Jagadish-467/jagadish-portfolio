@@ -5,11 +5,11 @@ import { BackgroundThread } from "./BackgroundThread";
 
 // Card-reactive ambient aura colors for each slide (Restrained monochrome & green)
 export const CARD_AURA_COLORS: Record<string | number, { primary: string; glow: string; label: string }> = {
-  1: { primary: "#00e599", glow: "rgba(0, 229, 153, 0.06)", label: "Emerald AU Aura" },
-  2: { primary: "#00e599", glow: "rgba(0, 229, 153, 0.06)", label: "Techniverse Systems Aura" },
-  3: { primary: "#00e599", glow: "rgba(0, 229, 153, 0.05)", label: "SIH Screening Aura" },
-  4: { primary: "#00e599", glow: "rgba(0, 229, 153, 0.06)", label: "LNIT Final 10 Aura" },
-  5: { primary: "#00e599", glow: "rgba(0, 229, 153, 0.06)", label: "Adobe Final Round Aura" },
+  1: { primary: "#10b981", glow: "rgba(16, 185, 129, 0.025)", label: "Emerald AU Aura" },
+  2: { primary: "#10b981", glow: "rgba(16, 185, 129, 0.025)", label: "Techniverse Systems Aura" },
+  3: { primary: "#10b981", glow: "rgba(16, 185, 129, 0.025)", label: "SIH Screening Aura" },
+  4: { primary: "#10b981", glow: "rgba(16, 185, 129, 0.025)", label: "LNIT Final 10 Aura" },
+  5: { primary: "#10b981", glow: "rgba(16, 185, 129, 0.025)", label: "Adobe Final Round Aura" },
 };
 
 interface BackgroundAtmosphereProps {
@@ -68,18 +68,21 @@ export const BackgroundStagePresets = ({
       <div className="absolute inset-0 pointer-events-none">
         {/* Left aura directly behind the 3D polaroid card deck */}
         <div 
-          className="absolute top-1/2 left-[28%] -translate-x-1/2 -translate-y-1/2 w-[520px] md:w-[650px] lg:w-[720px] h-[520px] md:h-[650px] lg:h-[720px] rounded-full blur-[110px] md:blur-[140px] pointer-events-none transition-colors duration-1000 ease-out"
+          className="absolute top-1/2 left-[28%] -translate-x-1/2 -translate-y-1/2 w-[520px] md:w-[650px] lg:w-[720px] h-[520px] md:h-[650px] lg:h-[720px] rounded-full blur-[110px] md:blur-[140px] pointer-events-none transition-colors duration-1000 ease-out will-change-transform"
           style={{
             backgroundColor: auraConfig.glow,
-            transform: "translate(-50%, -50%)",
+            transform: "translate3d(-50%, -50%, 0)",
+            contain: "strict",
           }}
         />
         {/* Subtle center ambient radial bleed for holistic depth */}
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full blur-[160px] pointer-events-none transition-colors duration-1000 ease-out"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full blur-[160px] pointer-events-none transition-colors duration-1000 ease-out will-change-transform"
           style={{
             backgroundColor: auraConfig.glow,
             opacity: 0.45,
+            transform: "translate3d(-50%, -50%, 0)",
+            contain: "strict",
           }}
         />
       </div>
@@ -112,7 +115,7 @@ export const BackgroundStagePresets = ({
 
         {/* Bottom Left Status & Track Indicator Rail with Synchronized Odometer Reel */}
         <div className="absolute bottom-4 left-6 md:bottom-6 md:left-8 flex items-center gap-2.5 font-mono text-[10px] tracking-widest text-white/45 hidden sm:flex">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#00e599] animate-pulse" />
+          <div className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
           {/* Dynamic Year Odometer: static "ARCHIVE // 202" with synchronized rolling digit reel */}
           <div className="flex items-center">
             <span>ARCHIVE //&nbsp;</span>

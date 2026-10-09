@@ -37,59 +37,60 @@ export const CustomCursorManager: React.FC<CustomCursorManagerProps> = ({
 
   // Global pointer & context tracking
   useEffect(() => {
+    let wasInsideHackathons = false;
+
     const handleMove = (e: MouseEvent | PointerEvent) => {
       mousePos.current.x = e.clientX;
       mousePos.current.y = e.clientY;
 
-      // Context inspection
-      const el = document.elementFromPoint(e.clientX, e.clientY);
-      const isInsideHackathons = !!el?.closest('#hackathons, [data-hackathons-section]');
-      
-      setCursorVisible(isInsideHackathons);
-
-      if (isInsideHackathons) {
-        document.body.classList.add("custom-cursor-enabled");
-      } else {
-        document.body.classList.remove("custom-cursor-enabled");
+      if (hardwareDotRef.current) {
+        hardwareDotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
       }
 
-      if (!el || !isInsideHackathons) {
+      const targetEl = e.target as Element | null;
+      const isInsideHackathons = !!targetEl?.closest('#hackathons, [data-hackathons-section]');
+
+      if (wasInsideHackathons !== isInsideHackathons) {
+        wasInsideHackathons = isInsideHackathons;
+        const hackathonsEl = document.getElementById("hackathons");
+        if (hackathonsEl) {
+          hackathonsEl.classList.toggle("custom-cursor-enabled", isInsideHackathons);
+        }
+        document.body.classList.toggle("custom-cursor-enabled", isInsideHackathons);
+        setCursorVisible(isInsideHackathons);
+      }
+
+      if (!isInsideHackathons || !targetEl) {
         setIsHoveringCard(false);
         setHoverContext(null);
         return;
       }
 
-      // Hardware dot: 100% instantaneous 1:1 hardware tracked
-      if (hardwareDotRef.current) {
-        hardwareDotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-      }
-
-      // Check Polaroid card deck
-      const isCard = !!el.closest('[data-cursor="card"], [data-card-stack], .polaroid-card-hero');
+      const isCard = !!targetEl.closest('[data-cursor="card"], [data-card-stack], .polaroid-card-hero');
       setIsHoveringCard(isCard);
 
-      // Interactive targets
-      if (el.closest('button[title*="Resume"], button[title*="Pause"], button[aria-label*="slide"]')) {
-        setHoverContext(isPaused ? "RESUME" : "PAUSE");
-      } else if (el.closest('button[aria-label^="Go to slide"]')) {
-        const btn = el.closest('button[aria-label^="Go to slide"]');
+      let nextContext: string | null = null;
+      if (targetEl.closest('button[title*="Resume"], button[title*="Pause"], button[aria-label*="slide"]')) {
+        nextContext = isPaused ? "RESUME" : "PAUSE";
+      } else if (targetEl.closest('button[aria-label^="Go to slide"]')) {
+        const btn = targetEl.closest('button[aria-label^="Go to slide"]');
         const match = btn?.getAttribute("aria-label")?.match(/\d+/);
-        setHoverContext(match ? `SLIDE 0${match[0]}` : "SLIDE");
-      } else if (el.closest('[data-cursor="tech"], .tech-pill')) {
-        setHoverContext(el.textContent?.trim().slice(0, 10).toUpperCase() || "TECH");
+        nextContext = match ? `SLIDE 0${match[0]}` : "SLIDE";
+      } else if (targetEl.closest('[data-cursor="tech"], .tech-pill')) {
+        nextContext = targetEl.textContent?.trim().slice(0, 10).toUpperCase() || "TECH";
       } else if (isCard) {
-        setHoverContext("SNAP // NEXT");
-      } else if (el.closest('button, a, [role="button"]')) {
-        setHoverContext("SELECT");
-      } else {
-        setHoverContext(null);
+        nextContext = "SNAP // NEXT";
+      } else if (targetEl.closest('button, a, [role="button"]')) {
+        nextContext = "SELECT";
       }
+
+      setHoverContext(nextContext);
     };
 
     const handleDown = () => {
       setIsMouseDown(true);
       setIsClickFlashing(true);
-      setTimeout(() => setIsClickFlashing(false), 380);
+      window.setTimeout(() => setIsClickFlashing(false), 380);
     };
 
     const handleUp = () => {
@@ -105,7 +106,6 @@ export const CustomCursorManager: React.FC<CustomCursorManagerProps> = ({
     };
 
     window.addEventListener("pointermove", handleMove, { passive: true });
-    window.addEventListener("mousemove", handleMove, { passive: true });
     window.addEventListener("pointerdown", handleDown);
     window.addEventListener("pointerup", handleUp);
     document.addEventListener("mouseleave", handleLeave);
@@ -113,13 +113,14 @@ export const CustomCursorManager: React.FC<CustomCursorManagerProps> = ({
 
     return () => {
       window.removeEventListener("pointermove", handleMove);
-      window.removeEventListener("mousemove", handleMove);
       window.removeEventListener("pointerdown", handleDown);
       window.removeEventListener("pointerup", handleUp);
       document.removeEventListener("mouseleave", handleLeave);
       document.removeEventListener("mouseenter", handleEnter);
+      document.getElementById("hackathons")?.classList.remove("custom-cursor-enabled");
+      document.body.classList.remove("custom-cursor-enabled");
     };
-  }, [cursorVisible, isPaused]);
+  }, [isPaused]);
 
   // Spring physics render loop for trailing viewfinder brackets
   useEffect(() => {
@@ -143,10 +144,11 @@ export const CustomCursorManager: React.FC<CustomCursorManagerProps> = ({
     };
   }, []);
 
-  if (!cursorVisible) return null;
-
   return (
-    <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden select-none">
+    <div
+      className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden select-none"
+      style={{ visibility: cursorVisible ? "visible" : "hidden" }}
+    >
       
       {/* LAYER 1: Zero-Latency Hardware Pinpoint Center Dot */}
       <div 

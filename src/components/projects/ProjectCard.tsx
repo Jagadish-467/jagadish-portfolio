@@ -6,7 +6,7 @@ export interface ProjectData {
   number: string;
   title: string;
   subtitle: string;
-  category: '3D & Creative' | 'Fullstack' | 'Systems & AI' | 'DISTRIBUTED & SYSTEMS' | 'QUANTUM & AI' | 'FULL-STACK & APPS';
+  category: 'Distributed & Systems' | 'Quantum & AI' | 'Fullstack & Apps' | '3D & Creative' | 'Fullstack' | 'Systems & AI' | 'DISTRIBUTED & SYSTEMS' | 'QUANTUM & AI' | 'FULL-STACK & APPS';
   summary: string;
   description: string[];
   techStack: string[];

@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import './AutographLoader.css';
 
 interface AutographLoaderProps {
+  onReveal?: () => void;
   onComplete: () => void;
 }
 
@@ -17,68 +18,87 @@ const letterPaths = [
   "M395.71 155.47L395.71 155.47Q392.98 155.47 391.39 150.86Q389.81 146.26 389.81 140.50L389.81 140.50Q389.81 133.58 392.11 124.08Q394.42 114.58 398.16 104.06Q401.90 93.55 406.58 83.47Q411.26 73.39 416.16 65.18Q421.06 56.98 425.38 52.08Q429.70 47.18 432.86 47.18L432.86 47.18Q435.46 47.18 436.54 50.28Q437.62 53.38 437.62 56.26L437.62 56.26Q437.62 60.29 435.82 66.05Q434.02 71.81 430.85 78.36Q427.68 84.91 423.50 91.25Q419.33 97.58 414.43 102.84Q409.54 108.10 404.50 111.12L404.50 111.12Q402.77 115.30 401.54 120.48Q400.32 125.66 399.74 130.63Q399.17 135.60 399.17 139.49L399.17 139.49Q399.17 141.07 399.24 142.22Q399.31 143.38 399.46 144.38L399.46 144.38Q401.47 138.48 403.85 132.94Q406.22 127.39 408.96 122.71Q411.70 118.03 414.79 114.50Q417.89 110.98 421.34 109.03Q424.80 107.09 428.69 107.09L428.69 107.09Q432.72 107.09 435.10 109.03Q437.47 110.98 438.55 113.93Q439.63 116.88 439.63 120.05L439.63 120.05Q439.63 124.51 438.12 128.69Q436.61 132.86 435.02 136.75Q433.44 140.64 433.44 144.24L433.44 144.24Q433.44 147.12 434.66 148.42Q435.89 149.71 437.76 149.71L437.76 149.71Q441.07 149.71 445.18 146.54Q449.28 143.38 453.31 138.12Q457.34 132.86 460.22 126.67L460.22 126.67L462.10 128.40Q459.07 135.46 454.75 141.14Q450.43 146.83 445.25 150.14Q440.06 153.46 434.45 153.46L434.45 153.46Q429.55 153.46 427.03 150.86Q424.51 148.27 424.51 144.38L424.51 144.38Q424.51 141.36 425.66 137.62Q426.82 133.87 427.90 129.98Q428.98 126.10 428.98 122.64L428.98 122.64Q428.98 118.90 427.39 117.31Q425.81 115.73 423.50 115.73L423.50 115.73Q419.90 115.73 417.02 118.61Q414.14 121.49 411.77 126.02Q409.39 130.56 407.30 135.60Q405.22 140.64 403.34 145.18Q401.47 149.71 399.60 152.59Q397.73 155.47 395.71 155.47ZM406.37 105.50L406.37 105.50Q410.40 102.34 414.22 97.44Q418.03 92.54 421.34 87Q424.66 81.46 427.25 76.13Q429.84 70.80 431.28 66.48Q432.72 62.16 432.72 60.00L432.72 60.00Q432.72 59.28 432.58 59.06Q432.43 58.85 432.14 58.85L432.14 58.85Q431.14 58.85 428.04 62.81Q424.94 66.77 420.91 73.39Q416.88 80.02 412.99 88.37Q409.10 96.72 406.37 105.50Z"
 ];
 
-export default function AutographLoader({ onComplete }: AutographLoaderProps) {
+export default function AutographLoader({ onReveal, onComplete }: AutographLoaderProps) {
   const pathRefs = useRef<(SVGPathElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+  const onRevealRef = useRef(onReveal);
+  const onCompleteRef = useRef(onComplete);
+  onRevealRef.current = onReveal;
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
     const containerEl = containerRef.current;
     if (!containerEl) return;
 
-    // Hard safety timer: ensure onComplete is invoked even if animation is throttled by browser
-    const safetyTimer = setTimeout(() => {
-      onComplete();
-    }, 2200);
+    let isCompleted = false;
+    let safetyTimer: ReturnType<typeof setTimeout>;
 
-    const tl = gsap.timeline({
-      onComplete: () => {
+    const ctx = gsap.context(() => {
+      const completeLoader = () => {
+        if (isCompleted) return;
+        isCompleted = true;
         clearTimeout(safetyTimer);
+        onRevealRef.current?.();
+
         gsap.to(containerEl, {
           opacity: 0,
           duration: 0.5,
           ease: 'power2.inOut',
-          onComplete: onComplete
+          onComplete: () => {
+            onCompleteRef.current?.();
+          }
         });
-      }
-    });
+      };
 
-    // Setup initial state for all paths
-    pathRefs.current.forEach((pathEl) => {
-      if (!pathEl) return;
-      try {
-        const length = pathEl.getTotalLength ? pathEl.getTotalLength() : 300;
-        gsap.set(pathEl, { 
-          strokeDasharray: length, 
-          strokeDashoffset: length,
-          fill: 'transparent' 
-        });
-      } catch (e) {
-        gsap.set(pathEl, { fill: 'transparent' });
-      }
-    });
+      // Safety fallback timer
+      safetyTimer = setTimeout(() => {
+        completeLoader();
+      }, 2600);
 
-    // Draw each letter sequentially (snappy, fluid signature handwriting)
-    pathRefs.current.forEach((pathEl, index) => {
-      if (!pathEl) return;
-      tl.to(pathEl, {
-        strokeDashoffset: 0,
-        duration: 0.22, // snappy and fluid
-        ease: 'power1.inOut'
-      }, index === 0 ? "+=0.05" : "-=0.08");
-    });
+      const tl = gsap.timeline({
+        onComplete: () => {
+          completeLoader();
+        }
+      });
 
-    // Fill in the color for all letters together
-    tl.to(pathRefs.current, {
-      fill: '#00e599',
-      duration: 0.35,
-      ease: 'power2.out'
-    }, "+=0.05");
+      // Setup initial state for all paths
+      pathRefs.current.forEach((pathEl) => {
+        if (!pathEl) return;
+        try {
+          const length = pathEl.getTotalLength ? pathEl.getTotalLength() : 300;
+          gsap.set(pathEl, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+            fill: 'transparent'
+          });
+        } catch (e) {
+          gsap.set(pathEl, { fill: 'transparent' });
+        }
+      });
+
+      // Draw each letter sequentially
+      pathRefs.current.forEach((pathEl, index) => {
+        if (!pathEl) return;
+        tl.to(pathEl, {
+          strokeDashoffset: 0,
+          duration: 0.22,
+          ease: 'power1.inOut'
+        }, index === 0 ? "+=0.05" : "-=0.08");
+      });
+
+      // Fill in the color for all letters together
+      tl.to(pathRefs.current, {
+        fill: '#00e599',
+        duration: 0.35,
+        ease: 'power2.out'
+      }, "+=0.05");
+    }, containerRef);
 
     return () => {
       clearTimeout(safetyTimer);
-      tl.kill();
+      ctx.revert();
     };
-  }, [onComplete]);
+  }, []); // Run ONCE on mount
 
   return (
     <div ref={containerRef} className="autograph-loader-container">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ProjectCard, ProjectData, ProjectModal } from './ProjectCard';
-import { LayoutGrid, BookOpen, List, ArrowUpRight } from 'lucide-react';
+import { LayoutGrid, List, ArrowUpRight } from 'lucide-react';
 import './Projects.css';
 
 // --------------------------------------------------------------------------
@@ -293,7 +293,7 @@ const PROJECTS: ProjectData[] = [
 ];
 
 type CategoryFilter = 'All Projects' | 'Quantum & AI' | 'Distributed & Systems' | 'Fullstack & Apps';
-type ViewMode = 'list' | 'grid' | 'editorial';
+type ViewMode = 'grid' | 'list';
 
 export default function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState<CategoryFilter>('All Projects');
@@ -437,7 +437,7 @@ export default function ProjectsSection() {
             ))}
           </div>
 
-          {/* View Switcher: Grid, Editorial, Hover List */}
+          {/* View Switcher: Grid vs Hover List */}
           <div className="projects-view-switcher" role="radiogroup" aria-label="Project layout view switcher">
             <button
               type="button"
@@ -447,15 +447,6 @@ export default function ProjectsSection() {
             >
               <LayoutGrid className="w-3.5 h-3.5" />
               <span>Grid</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setViewMode('editorial')}
-              className={`projects-view-btn ${viewMode === 'editorial' ? 'active' : ''}`}
-              aria-label="Editorial layout"
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>Editorial</span>
             </button>
             <button
               type="button"
@@ -517,63 +508,6 @@ export default function ProjectsSection() {
           </div>
         )}
 
-        {/* VIEW MODE 3: EDITORIAL VIEW */}
-        {viewMode === 'editorial' && (
-          <div className="project-editorial-grid">
-            {filteredProjects.map((project) => (
-              <div 
-                key={project.id}
-                className="project-editorial-card group cursor-pointer"
-                onClick={() => setSelectedProject(project)}
-              >
-                <div className="editorial-img-box">
-                  <img 
-                    src={project.previewImage} 
-                    alt={project.title}
-                  />
-                </div>
-                <div className="flex flex-col justify-between py-2">
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="font-mono text-sm text-[#10b981] font-bold">// {project.number}</span>
-                      <span className="font-mono text-xs uppercase px-2.5 py-0.5 rounded-full bg-black/5 border border-black/10 text-gray-700 font-medium">
-                        {project.category}
-                      </span>
-                      <span className="font-mono text-xs text-gray-500 ml-auto">{project.year}</span>
-                    </div>
-
-                    <h3 className="text-2xl sm:text-3xl font-black text-black mb-2 group-hover:text-[#10b981] transition-colors uppercase">
-                      {project.title}
-                    </h3>
-                    <p className="font-mono text-sm text-[#10b981] font-semibold mb-3">
-                      {project.subtitle}
-                    </p>
-                    <p className="text-sm text-gray-600 leading-relaxed mb-6 font-sans">
-                      {project.summary}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-4 border-t border-black/10">
-                    <div className="flex flex-wrap gap-2">
-                      {project.keyTags?.map(tag => (
-                        <span key={tag} className="project-list-chip">{tag}</span>
-                      ))}
-                    </div>
-
-                    <button
-                      type="button"
-                      className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-black group-hover:text-[#10b981] transition-colors"
-                    >
-                      <span>SPECIFICATION</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
         {/* Bottom Section Footnote */}
         <div className="mt-16 pt-8 border-t border-black/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-xs text-gray-500">
           <div>
@@ -583,6 +517,14 @@ export default function ProjectsSection() {
             <span className="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-ping" />
             <span className="text-black font-semibold">TOTAL ACTIVE ARCHIVES: {PROJECTS.length}</span>
           </div>
+        </div>
+
+        {/* Connecting Conduit into 04 Arsenal */}
+        <div className="mt-12 flex flex-col items-center justify-center pointer-events-none">
+          <div className="w-[1px] h-10 bg-gradient-to-b from-black/25 via-[#10b981] to-transparent animate-pulse" />
+          <span className="font-mono text-[9px] tracking-[0.25em] text-gray-400 uppercase mt-2">
+            DATA PIPELINE // 04 TECHNICAL ARSENAL
+          </span>
         </div>
       </div>
 

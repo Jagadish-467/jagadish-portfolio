@@ -382,59 +382,6 @@
 }
 
 /* ==========================================================================
-   EDITORIAL VIEW (LIGHT MODE)
-   ========================================================================== */
-
-.project-editorial-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-.project-editorial-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  background: #ffffff;
-  border: 1.5px solid rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  padding: 2.2rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@media (min-width: 1024px) {
-  .project-editorial-card {
-    grid-template-columns: 1.1fr 1fr;
-    align-items: center;
-  }
-}
-
-.project-editorial-card:hover {
-  border-color: rgba(16, 185, 129, 0.6);
-  box-shadow: 0 16px 40px rgba(16, 185, 129, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
-}
-
-.editorial-img-box {
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  height: 280px;
-  background: #000000;
-}
-
-.editorial-img-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.project-editorial-card:hover .editorial-img-box img {
-  transform: scale(1.04);
-}
-
-/* ==========================================================================
    GRID VIEW CARDS (LIGHT MODE)
    ========================================================================== */
 

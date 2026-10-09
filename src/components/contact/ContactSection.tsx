@@ -52,9 +52,9 @@ export function ContactSection() {
       <div className="contact-crosshair contact-crosshair-bl" />
       <div className="contact-crosshair contact-crosshair-br" />
 
-      <div className="relative z-10 mx-auto max-w-7xl w-full">
+      <div className="relative z-10 mx-auto max-w-7xl w-full flex-1 flex flex-col justify-between">
         {/* 2-Column Responsive Layout: Information on Left, Contact Form fully fitting Right Side */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-stretch my-auto">
           
           {/* Left Column: Section Header & Direct Channels */}
           <div className="flex flex-col justify-between gap-6">
@@ -90,7 +90,7 @@ export function ContactSection() {
         </div>
 
         {/* Bottom Section Editorial Credits */}
-        <div className="mt-16 pt-8 border-t border-black/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-xs text-gray-500">
+        <div className="mt-10 pt-6 border-t border-black/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-xs text-gray-500">
           <div>
             PONNADA JAGADISH KUMAR // DESIGNED WITH RIGOR &amp; AESTHETIC INTEGRITY
           </div>

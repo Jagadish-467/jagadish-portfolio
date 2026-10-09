@@ -55,8 +55,8 @@ export default function About() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 65%', 
-          end: 'bottom 85%', 
+          start: 'top 65%',
+          end: 'bottom 85%',
           scrub: 1.2, // Ultra-smooth buttery scrub
         }
       });
@@ -103,11 +103,14 @@ export default function About() {
   }, []);
 
   return (
-    <section ref={containerRef} id="about" className="portfolio-section-anchor relative w-full bg-[#ffffff] min-h-[260vh] py-32 px-8 md:px-16 lg:px-20 flex flex-col justify-between overflow-hidden perspective-[1000px]">
-      
+    <section
+      ref={containerRef}
+      id="about"
+      className="portfolio-section-anchor relative w-full bg-[#ffffff] pt-24 md:pt-32 pb-8 px-8 md:px-16 lg:px-20 flex flex-col overflow-hidden perspective-[1000px]"
+    >
       {/* 1. Brutalist Editorial Dot Grid Background */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{ backgroundImage: 'radial-gradient(#000 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }}
       ></div>
 
@@ -119,10 +122,10 @@ export default function About() {
       </div>
 
       {/* 3. Decorative Architectural Corner Crosshairs */}
-      <div className="absolute top-8 left-8 w-6 h-6 border-t-[1.5px] border-l-[1.5px] border-black/40"></div>
-      <div className="absolute top-8 right-8 w-6 h-6 border-t-[1.5px] border-r-[1.5px] border-black/40"></div>
-      <div className="absolute bottom-32 left-8 w-6 h-6 border-b-[1.5px] border-l-[1.5px] border-black/40"></div>
-      <div className="absolute bottom-32 right-8 w-6 h-6 border-b-[1.5px] border-r-[1.5px] border-black/40"></div>
+      <div className="absolute top-8 left-8 w-6 h-6 border-t-[1.5px] border-l-[1.5px] border-black/40 pointer-events-none"></div>
+      <div className="absolute top-8 right-8 w-6 h-6 border-t-[1.5px] border-r-[1.5px] border-black/40 pointer-events-none"></div>
+      <div className="absolute bottom-8 left-8 w-6 h-6 border-b-[1.5px] border-l-[1.5px] border-black/40 pointer-events-none"></div>
+      <div className="absolute bottom-8 right-8 w-6 h-6 border-b-[1.5px] border-r-[1.5px] border-black/40 pointer-events-none"></div>
 
       {/* 4. Awwwards Rotating Typographic Badge (Full 360-degree continuous loop) */}
       <div className="absolute top-28 right-8 lg:right-16 z-20 pointer-events-none hidden md:block">
@@ -131,7 +134,7 @@ export default function About() {
             <path id="circlePath" d="M 60, 60 m -42, 0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" fill="transparent" />
             <text className="text-[7.2px] font-mono tracking-[0.08em] fill-black font-semibold uppercase">
               <textPath href="#circlePath" textLength="263" lengthAdjust="spacing">
-                PONNADA JAGADISH KUMAR • PONNADA JAGADISH KUMAR • 
+                PONNADA JAGADISH KUMAR • PONNADA JAGADISH KUMAR •
               </textPath>
             </text>
           </svg>
@@ -142,39 +145,43 @@ export default function About() {
       </div>
 
       {/* 4.5. Dynamic Manifesto Scroll Line */}
-      <div className="absolute left-8 lg:left-12 top-48 bottom-48 w-[1px] bg-black/10 hidden md:block z-0">
+      <div className="absolute left-8 lg:left-12 top-36 md:top-48 bottom-32 w-[1px] bg-black/10 hidden md:block z-0">
         <div className="manifesto-progress w-full bg-[#10b981] origin-top h-full scale-y-0 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
       </div>
-      <div className="absolute left-10 lg:left-14 top-48 text-[9px] font-mono text-black/40 rotate-90 origin-left hidden md:block whitespace-nowrap tracking-widest">
+      <div className="absolute left-10 lg:left-14 top-36 md:top-48 text-[9px] font-mono text-black/40 rotate-90 origin-left hidden md:block whitespace-nowrap tracking-widest">
         [ SYS.REQ // MANIFESTO_01 ]
       </div>
 
-      {/* 
-        5. The Core Manifesto Text - Large Bold Scale covering full vertical Manifesto span
+      {/*
+        5. The Core Manifesto Text - Perfectly Symmetrical Top & Bottom Spacing
       */}
-      <h2 className="font-sans font-bold leading-[0.88] tracking-[-0.035em] uppercase relative z-10 text-[3.6rem] sm:text-[4.6rem] md:text-[5.8rem] lg:text-[7.2rem] max-w-[56%] pb-64 pt-16 md:pl-8 lg:pl-12">
+      <h2 className="font-sans font-bold leading-[0.88] tracking-[-0.035em] uppercase relative z-10 text-[3.6rem] sm:text-[4.6rem] md:text-[5.8rem] lg:text-[7.2rem] max-w-[56%] pt-12 md:pt-16 pb-12 md:pb-16 md:pl-8 lg:pl-12">
         {textContent.map((item, i) => (
-          <span 
-            key={i} 
+          <span
+            key={i}
+            id={i === 35 ? "manifesto-computer-science" : undefined}
             data-highlight={item.highlight}
-            style={item.highlight ? { 
+            style={item.highlight ? {
               fontFamily: "'Caveat', cursive",
               fontStyle: 'normal',
               fontWeight: 700
             } : {}}
-            className={`about-word inline-block mr-[0.2em] mb-2 text-[#e5e7eb] origin-bottom ${
-              item.highlight 
-                ? 'font-normal tracking-normal normal-case not-italic drop-shadow-sm z-20 relative' 
+            className={`about-word inline-block mr-[0.2em] ${i === textContent.length - 1 ? 'mb-0' : 'mb-2'} text-[#e5e7eb] origin-bottom ${
+              item.highlight
+                ? 'font-normal tracking-normal normal-case not-italic drop-shadow-sm z-20 relative'
                 : 'z-10 relative'
-            }`} 
+            }`}
           >
             {item.word}
           </span>
         ))}
       </h2>
 
-      {/* 6. Structured Details Footer fixed at the bottom */}
-      <div className="absolute bottom-8 left-8 right-8 flex flex-col md:flex-row justify-between items-end border-t-[1.5px] border-black/10 pt-6 z-10 gap-8">
+      {/* 5.5 Symmetrical Bottom Spacer: Matches the exact measurement of the top gap */}
+      <div className="w-full h-24 md:h-32 pointer-events-none select-none"></div>
+
+      {/* 6. Structured Details Footer placed in natural flow right after the bottom gap */}
+      <div className="relative w-full flex flex-col md:flex-row justify-between items-start md:items-end border-t-[1.5px] border-black/10 pt-6 pb-2 z-10 gap-8">
         <div className="text-[0.65rem] font-mono uppercase tracking-widest leading-relaxed text-gray-500">
           <span className="block mb-1 text-black font-bold flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-[#10b981] rounded-full inline-block animate-pulse"></span>
@@ -182,7 +189,7 @@ export default function About() {
           </span>
           VIZIANAGARAM, INDIA
         </div>
-        
+
         <div className="text-[0.65rem] font-mono uppercase tracking-widest leading-relaxed text-left md:text-center text-gray-500">
           <span className="block mb-1 text-black font-bold">EDUCATION</span>
           LENDI INSTITUTE OF ENGINEERING & TECH<br/>

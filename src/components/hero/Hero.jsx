@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Hero.css";
@@ -100,22 +100,57 @@ const CodeIcon = () => (
 export default function Hero({ isLoaded }) {
   const containerRef = useRef(null);
 
-  // Load animation effect
+  // Guarantee pristine zero-state on initial mount before paint
+  useLayoutEffect(() => {
+    gsap.set(".h-image-container", {
+      autoAlpha: 1,
+      x: "0vw",
+      y: "0vh",
+      scale: 1,
+      rotate: 0,
+    });
+    gsap.set(".h-image-wrap", { height: "0%" });
+    gsap.set(".h-image", {
+      scale: 1.4,
+      filter: "grayscale(100%) contrast(1.08)",
+    });
+    gsap.set(".h-char", { yPercent: 120, y: 0, rotateZ: 3, opacity: 0 });
+    gsap.set(".h-fade", { opacity: 0, y: 15 });
+    gsap.set(".h-image-frame", { opacity: 0 });
+  }, []);
+
+  // Consolidated Master Animation & Pinned Portrait Hand-Off
   useEffect(() => {
     if (!isLoaded) return;
 
     let ctx = gsap.context(() => {
-      const loadTl = gsap.timeline();
+      const heroEl = containerRef.current;
+      const aboutEl = document.getElementById("about");
 
-      // Reset states
+      const isDesktop = window.innerWidth >= 1024;
+      const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+      const targetX = isDesktop ? "30vw" : isTablet ? "22vw" : "0vw";
+      const exitX = isDesktop ? "85vw" : "100vw";
+
+      // 1. Initial State Guarantees
+      gsap.set(".h-image-container", {
+        autoAlpha: 1,
+        x: "0vw",
+        y: "0vh",
+        scale: 1,
+        rotate: 0,
+      });
       gsap.set(".h-image-wrap", { height: "0%" });
       gsap.set(".h-image", {
         scale: 1.4,
         filter: "grayscale(100%) contrast(1.08)",
       });
-      gsap.set(".h-char", { yPercent: 120, rotateZ: 3, opacity: 0 });
+      gsap.set(".h-char", { yPercent: 120, y: 0, rotateZ: 3, opacity: 0 });
       gsap.set(".h-fade", { opacity: 0, y: 15 });
       gsap.set(".h-image-frame", { opacity: 0 });
+
+      // 2. Exact Original Entrance Load Animation
+      const loadTl = gsap.timeline();
 
       loadTl
         .to(".h-image-wrap", {
@@ -131,19 +166,20 @@ export default function Hero({ isLoaded }) {
             duration: 2.2,
             ease: "power3.out",
           },
-          "-=1.8",
+          "-=1.8"
         )
         .to(
           ".h-char",
           {
             yPercent: 0,
+            y: 0,
             opacity: 1,
             rotateZ: 0,
             duration: 1.2,
             stagger: 0.03,
             ease: "power4.out",
           },
-          "-=1.5",
+          "-=1.5"
         )
         .to(
           ".h-fade",
@@ -154,10 +190,10 @@ export default function Hero({ isLoaded }) {
             stagger: 0.1,
             ease: "power2.out",
           },
-          "-=0.8",
+          "-=0.8"
         )
         .add(() => {
-          // Floating movement isolated on h-card-float wrapper
+          // Floating idle movement on h-card-float wrapper
           gsap.to(".h-card-float", {
             y: -12,
             duration: 3,
@@ -166,23 +202,11 @@ export default function Hero({ isLoaded }) {
             ease: "sine.inOut",
           });
         });
-    }, containerRef);
 
-    return () => ctx.revert();
-  }, [isLoaded]);
-
-  // --------------------------------------------------------
-  // EFFECT 2: PINNED PORTRAIT TRANSITION
-  // --------------------------------------------------------
-  useEffect(() => {
-    if (!isLoaded) return;
-
-    let removeWindowListeners = () => {};
-    let ctx = gsap.context(() => {
-      // 1. Fade out the Hero text as we scroll away
+      // 3. Fade out the Hero text as we scroll away
       gsap.to([".h-title-row", ".h-footer"], {
         scrollTrigger: {
-          trigger: "#hero",
+          trigger: heroEl,
           start: "top top",
           end: "bottom top",
           scrub: true,
@@ -192,79 +216,53 @@ export default function Hero({ isLoaded }) {
         ease: "none",
       });
 
-      // 2. The Master Pinned Portrait
+      // 4. The Master Pinned Portrait
+      const vh = window.innerHeight;
+      const heroH = heroEl ? heroEl.offsetHeight : vh;
+      const aboutH = aboutEl ? aboutEl.offsetHeight : vh * 2.2;
+      const totalScroll = Math.max(heroH + aboutH - vh, vh * 1.5);
+
+      // Dynamically calculate timeline stages on a 10.0s timeline:
+      // Phase 1 (0 to p1Time): Hero scrolls out, card glides from center to About 30vw position
+      const p1Time = Math.min(3.4, Math.max(2.4, (heroH / totalScroll) * 10));
+
+      // Phase 2 & 3: The card stays steady until "COMPUTER SCIENCE", then disappears to the side
+      const csEl = document.getElementById("manifesto-computer-science");
+      let exitStartTime = 8.5; // Fallback ~85% of scroll
+      if (csEl && aboutEl) {
+        const csDocTop = aboutEl.offsetTop + csEl.offsetTop;
+        const csScroll = csDocTop - (vh * 0.52);
+        const csRatio = Math.min(0.88, Math.max(0.75, csScroll / totalScroll));
+        exitStartTime = csRatio * 10;
+      }
+      const exitDurationSec = Math.max(1.2, 10.0 - exitStartTime);
+
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: "#hero",
+          trigger: heroEl,
           start: "top top",
-          endTrigger: "#about",
-          end: "bottom 90%",
+          endTrigger: aboutEl || "#about",
+          end: "bottom bottom", // Ends exactly at the place shown in Image 2
           scrub: true,
           pin: ".h-image-container",
           pinSpacing: false,
-          onLeave: () => {
-            const container = document.querySelector(".h-image-container");
-            const frame = document.querySelector(".h-image-frame");
-            if (container) {
-              container.style.setProperty("display", "none", "important");
-              container.style.setProperty("opacity", "0", "important");
-              container.style.setProperty("visibility", "hidden", "important");
-              container.style.setProperty(
-                "pointer-events",
-                "none",
-                "important",
-              );
-            }
-            if (frame) {
-              frame.style.setProperty("display", "none", "important");
-              frame.style.setProperty("opacity", "0", "important");
-            }
-          },
-          onEnterBack: () => {
-            const hackEl = document.getElementById("hackathons");
-            if (
-              hackEl &&
-              hackEl.getBoundingClientRect().top < window.innerHeight
-            ) {
-              return; // Strict guard: never make visible if Hackathons is on screen!
-            }
-            const container = document.querySelector(".h-image-container");
-            const frame = document.querySelector(".h-image-frame");
-            if (container) {
-              container.style.removeProperty("display");
-              container.style.removeProperty("visibility");
-              container.style.removeProperty("pointer-events");
-            }
-            if (frame) {
-              frame.style.removeProperty("display");
-            }
-          },
-          onLeaveBack: () => {
-            const container = document.querySelector(".h-image-container");
-            const frame = document.querySelector(".h-image-frame");
-            if (container) {
-              container.style.removeProperty("display");
-              container.style.removeProperty("visibility");
-              container.style.removeProperty("pointer-events");
-            }
-            if (frame) {
-              frame.style.removeProperty("display");
-            }
-          },
+          invalidateOnRefresh: true,
         },
       });
 
-      // Travel to the right side of the screen while staying at exact 1x scale!
+      // Phase 1: Travel from Hero center to About manifesto right position (0 to p1Time)
       tl.to(
         ".h-image-container",
         {
-          x: "30vw",
-          y: "2vh",
+          x: targetX,
+          y: "0vh",
           scale: 1,
-          duration: 1,
+          rotate: 0,
+          autoAlpha: 1,
+          duration: p1Time,
           ease: "power2.inOut",
         },
-        0,
+        0
       );
 
       // Smoothly transition image from black & white in Hero to full color in About!
@@ -272,10 +270,10 @@ export default function Hero({ isLoaded }) {
         ".h-image",
         {
           filter: "grayscale(0%) contrast(1)",
-          duration: 1,
+          duration: p1Time,
           ease: "power2.inOut",
         },
-        0,
+        0
       );
 
       // Snap the glowing neon frame into place once the image reaches the final About position
@@ -283,65 +281,44 @@ export default function Hero({ isLoaded }) {
         ".h-image-frame",
         {
           opacity: 0.95,
-          duration: 0.35,
+          duration: 0.8,
           ease: "power2.out",
         },
-        0.85,
+        Math.max(0, p1Time - 0.8)
       );
 
-      // Hold phase: keeps image pinned while user reads about text
-      tl.to(".h-image-container", { duration: 2.2 });
+      // Phase 2: Hold phase: keeps image pinned rock-solid while user reads through manifesto text
+      // (from p1Time all the way to exitStartTime, zero movement, frame lit, full opacity)
 
-      // Exit phase: smoothly fade & scale out BEFORE leaving About into Hackathons!
-      tl.to(".h-image-container", {
-        opacity: 0,
-        scale: 0.94,
-        duration: 0.6,
-        ease: "power2.in",
-      });
+      // Phase 3: Premium Right-Side Exit Animation terminating strictly at Image 2 before Hackathons
+      // The neon frame dims out smoothly as exit begins
+      tl.to(
+        ".h-image-frame",
+        {
+          opacity: 0,
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        exitStartTime
+      );
 
-      // Rock-solid continuous scroll guard: unconditionally hide hero image if Hackathons is in or near viewport
-      const handleWindowScroll = () => {
-        const hackEl = document.getElementById("hackathons");
-        const container = document.querySelector(".h-image-container");
-        const frame = document.querySelector(".h-image-frame");
-        if (!hackEl || !container) return;
-
-        const rect = hackEl.getBoundingClientRect();
-        // If the top of Hackathons is within 150px of entering the viewport, or already in view:
-        if (rect.top <= window.innerHeight + 150) {
-          container.style.setProperty("display", "none", "important");
-          container.style.setProperty("opacity", "0", "important");
-          container.style.setProperty("visibility", "hidden", "important");
-          container.style.setProperty("pointer-events", "none", "important");
-          if (frame) {
-            frame.style.setProperty("display", "none", "important");
-            frame.style.setProperty("opacity", "0", "important");
-          }
-        } else {
-          container.style.removeProperty("display");
-          container.style.removeProperty("opacity");
-          container.style.removeProperty("visibility");
-          container.style.removeProperty("pointer-events");
-          if (frame) {
-            frame.style.removeProperty("display");
-            frame.style.removeProperty("opacity");
-          }
-        }
-      };
-
-      window.addEventListener("scroll", handleWindowScroll, { passive: true });
-      window.addEventListener("resize", handleWindowScroll);
-      handleWindowScroll(); // Initial check
-
-      removeWindowListeners = () => {
-        window.removeEventListener("scroll", handleWindowScroll);
-        window.removeEventListener("resize", handleWindowScroll);
-      };
+      // Card accelerates smoothly off to the right, tilts dynamically, scales slightly, and dissolves
+      // Completely out of the screen at the exact scroll position of Image 2
+      tl.to(
+        ".h-image-container",
+        {
+          x: exitX,
+          rotate: 8,
+          scale: 0.92,
+          autoAlpha: 0,
+          duration: exitDurationSec,
+          ease: "power2.inOut",
+        },
+        exitStartTime
+      );
     }, containerRef);
 
     return () => {
-      removeWindowListeners();
       ctx.revert();
     };
   }, [isLoaded]);
@@ -429,7 +406,8 @@ export default function Hero({ isLoaded }) {
   return (
     <section
       ref={containerRef}
-      className="h-container"
+      id="hero"
+      className="portfolio-section-anchor h-container"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >

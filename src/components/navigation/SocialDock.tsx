@@ -85,6 +85,8 @@ const InstagramIcon = () => (
 // GLOBAL SOCIAL DOCK (Persistent in every section)
 // --------------------------------------------------------
 export default function SocialDock({ isLoaded = true }: SocialDockProps) {
+  if (!isLoaded) return null;
+
   const dockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -93,13 +95,15 @@ export default function SocialDock({ isLoaded = true }: SocialDockProps) {
     // Slide in from top to bottom on initial load
     gsap.fromTo(
       dockRef.current,
-      { opacity: 0, y: -40 },
+      { opacity: 0, yPercent: -50, y: -40 },
       {
         opacity: 1,
+        yPercent: -50,
         y: 0,
-        duration: 1,
+        duration: 0.9,
         ease: 'back.out(1.5)',
-        delay: 0.6
+        delay: 0.2,
+        clearProps: 'transform',
       }
     );
   }, [isLoaded]);

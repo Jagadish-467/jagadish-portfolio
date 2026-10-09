@@ -11,6 +11,7 @@ interface PolaroidCardProps {
   style?: React.CSSProperties;
   loading?: "eager" | "lazy";
   isActive?: boolean;
+  overlayRef?: React.Ref<HTMLDivElement>;
 }
 
 const PolaroidCard: React.FC<PolaroidCardProps> = ({ 
@@ -23,15 +24,15 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({
   style,
   loading = "lazy",
   isActive = false,
+  overlayRef,
 }) => {
   return (
     <div 
       className={cn(
-        "group/polaroid relative bg-[#0b0f17]/95 p-3 md:p-3.5",
+        "group/polaroid relative bg-[#0a0a0a] p-3 md:p-3.5",
         "border-[1.5px] border-white/16 rounded-2xl",
         "shadow-[0_24px_65px_rgba(0,0,0,0.85),0_0_30px_rgba(16,185,129,0.18)]",
-        "backdrop-blur-2xl transition-all duration-500",
-        showCaption ? "pb-14 md:pb-16" : "pb-3 md:p-3.5",
+        showCaption ? "pb-14 md:p-3.5" : "pb-3 md:p-3.5",
         "w-full select-none",
         className
       )}
@@ -62,7 +63,7 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({
           loading={loading}
           decoding="async"
           draggable={false}
-          className="w-full h-full object-cover select-none transition-all duration-700 ease-out filter grayscale-[70%] contrast-[1.18] brightness-[0.95] group-hover/polaroid:filter-none group-hover/polaroid:scale-[1.03] group-hover/polaroid:brightness-105"
+          className="w-full h-full object-cover select-none duration-700 ease-out grayscale-[70%] contrast-[1.18] brightness-[0.95] group-hover/polaroid:grayscale-0 group-hover/polaroid:scale-[1.03] group-hover/polaroid:brightness-105 transition-[filter,transform]"
           style={{ opacity: imageOpacity }}
         />
 
@@ -73,13 +74,13 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({
         />
 
         {/* Top Left Watermark inside image */}
-        <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[8.5px] font-mono text-white/80 tracking-wider uppercase">
-          CODE_ARENA // 2K25
+        <div className="absolute top-2.5 left-2.5 z-10 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[8.5px] font-mono text-white/80 tracking-wider uppercase">
+          {name ? name.toUpperCase().slice(0, 22) : "HACKATHON"}
         </div>
 
         {/* Bottom Right Verified Badge inside image */}
         <div className="absolute bottom-2.5 right-2.5 z-10 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#10b981]/50 text-[9px] font-mono text-[#10b981] font-bold tracking-wider uppercase shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-          FINALIST
+          {subtitle ? subtitle.toUpperCase() : "FINALIST"}
         </div>
         
         {/* Subtle active spotlight photographic sheen sweep */}
@@ -96,9 +97,16 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({
         )}
       </div>
       
-      {/* Caption Area */}
+      {/* Hardware-composited depth overlay */}
+      <div
+        ref={overlayRef}
+        className="polaroid-depth-overlay absolute inset-0 rounded-2xl pointer-events-none z-30 bg-black will-change-[opacity]"
+        style={{ opacity: "calc(1 - var(--card-brightness, 1))" }}
+        aria-hidden="true"
+      />
+
       {showCaption && name && subtitle && (
-        <div className="absolute bottom-3 left-3.5 right-3.5 md:bottom-4 md:left-4 md:right-4 flex items-center justify-between">
+        <div className="absolute bottom-3 left-3.5 right-3.5 md:hidden flex items-center justify-between">
           <div>
             <h3 className="text-base md:text-lg font-bold text-white tracking-tight leading-snug uppercase">
               {name}
@@ -116,4 +124,4 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({
   );
 };
 
-export default PolaroidCard;
+export default React.memo(PolaroidCard);

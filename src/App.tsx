@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Hero from './components/hero/Hero';
 import About from './components/about/About';
 import CardStackSection from './components/hackathons/CardStackSection';
@@ -7,10 +7,20 @@ import SkillsSection from './components/skills/SkillsSection';
 import ContactSection from './components/contact/ContactSection';
 import SocialDock from './components/navigation/SocialDock';
 import NavDock from './components/navigation/NavDock';
+import AutographLoader from './components/loader/AutographLoader';
 import { Toaster } from 'sonner';
 
 export default function App() {
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
+
+  const handleReveal = useCallback(() => {
+    setIsLoaded(true);
+  }, []);
+
+  const handleComplete = useCallback(() => {
+    setShowLoader(false);
+  }, []);
 
   // Prevent browser from remembering previous scroll position on reload
   useEffect(() => {
@@ -18,38 +28,37 @@ export default function App() {
       window.history.scrollRestoration = 'manual';
     }
     window.scrollTo(0, 0);
-    setIsLoaded(true);
   }, []);
 
   return (
     <div className="portfolio-scroll-root min-h-screen bg-[#060606] text-white">
+      {/* 00.5 // BESPOKE SIGNATURE AUTOGRAPH PRELOADER */}
+      {showLoader && (
+        <AutographLoader
+          onReveal={handleReveal}
+          onComplete={handleComplete}
+        />
+      )}
       {/* Global Left Navigation Dock (Darkmode only with horizontal slide transition) */}
-      <NavDock isLoaded={isLoaded} />
+      {isLoaded && <NavDock isLoaded={isLoaded} />}
 
       {/* Global Persistent Social Dock (Right side with border, active across all sections) */}
-      <SocialDock isLoaded={isLoaded} />
+      {isLoaded && <SocialDock isLoaded={isLoaded} />}
 
       {/* 00 // HERO SEQUENCE (DARK MODE) */}
-      <section id="hero" className="portfolio-section-anchor">
-        <Hero isLoaded={isLoaded} />
-      </section>
-      
+      <Hero isLoaded={isLoaded} />
+
       {/* 01 // ABOUT MANIFESTO (LIGHT MODE) */}
       <About />
 
       {/* 02 // HACKATHONS & COMPETITIONS (DARK MODE) */}
-      <section 
+      <CardStackSection
         id="hackathons"
-        className="portfolio-section-anchor relative"
-        data-hackathons-section="true"
-      >
-        <CardStackSection 
-          id="hackathons" 
-          tag="02 // COMPETITIVE REPERTOIRE"
-          sectionTitle="Hackathons & Technical Competitions"
-          subtitle="A curated record of high-stakes hackathons, competitive problem-solving, and algorithmic prototypes."
-        />
-      </section>
+        className="portfolio-section-anchor"
+        tag="02 // COMPETITIVE REPERTOIRE"
+        sectionTitle="Hackathons & Technical Competitions"
+        subtitle="A curated record of high-stakes hackathons, competitive problem-solving, and algorithmic prototypes."
+      />
 
       {/* 03 // MAJOR PROJECTS & ARCHITECTURES (LIGHT MODE) */}
       <ProjectsSection />
@@ -61,8 +70,8 @@ export default function App() {
       <ContactSection />
 
       {/* Global Toast Notifications */}
-      <Toaster 
-        position="bottom-right" 
+      <Toaster
+        position="bottom-right"
         theme="light"
         toastOptions={{
           style: {

@@ -4,6 +4,7 @@ import { CardItem } from "./CardStackSection";
 
 export interface CardStackTextHandle {
   updateProgress: (progress: number) => void;
+  updateCountdown: (progressPct: number, entranceDone: boolean) => void;
 }
 
 export interface CardStackTextProps {
@@ -235,8 +236,6 @@ export const CardStackText = forwardRef<CardStackTextHandle, CardStackTextProps>
     {
       cards,
       activeIndex,
-      isAnimationComplete = false,
-      countdownProgress = 0,
       isPaused = false,
       onAnimationComplete,
       onSelectIndex,
@@ -245,6 +244,8 @@ export const CardStackText = forwardRef<CardStackTextHandle, CardStackTextProps>
     ref
   ) => {
     const odometerRef = useRef<HTMLDivElement>(null);
+    const beamRef = useRef<HTMLDivElement>(null);
+    const sparkRef = useRef<HTMLDivElement>(null);
 
     const cardSchedules = useMemo(() => {
       return cards.map((c) => computeCardSchedule(c));
@@ -263,6 +264,16 @@ export const CardStackText = forwardRef<CardStackTextHandle, CardStackTextProps>
           if (odometerRef.current) {
             const clampedIndex = clamp(continuousIndex, 0, totalCards - 1);
             odometerRef.current.style.transform = `translateY(-${(clampedIndex * 24).toFixed(2)}px)`;
+          }
+        },
+        updateCountdown: (progressPct, entranceDone) => {
+          if (beamRef.current) {
+            beamRef.current.style.width = entranceDone ? `${progressPct}%` : "0%";
+            beamRef.current.style.opacity = entranceDone && progressPct > 0 ? "1" : "0";
+          }
+          if (sparkRef.current) {
+            sparkRef.current.style.opacity =
+              entranceDone && progressPct > 1.5 && progressPct < 98.5 ? "1" : "0";
           }
         },
       }),
@@ -310,7 +321,7 @@ export const CardStackText = forwardRef<CardStackTextHandle, CardStackTextProps>
                 className={cn(
                   "h-2 rounded-full transition-all duration-300 cursor-pointer",
                   idx === activeIndex
-                    ? "w-7 bg-[#00e599]"
+                    ? "w-7 bg-[#10b981]"
                     : "w-2 bg-white/25 hover:bg-white/50"
                 )}
                 aria-label={`Go to slide ${idx + 1}`}
@@ -386,28 +397,30 @@ export const CardStackText = forwardRef<CardStackTextHandle, CardStackTextProps>
                   {/* Active Charging Beam across the 5s countdown */}
                   {isActive && (
                     <div
+                      ref={beamRef}
                       className={cn(
                         "absolute inset-y-0 left-0 h-[1px] pointer-events-none will-change-[width,opacity]",
                         isPaused
                           ? "bg-gradient-to-r from-transparent via-amber-400/50 to-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.6)]"
-                          : "bg-gradient-to-r from-transparent via-[#00e599]/40 to-[#00e599] shadow-[0_0_10px_#00e599]"
+                          : "bg-gradient-to-r from-transparent via-[#10b981]/40 to-[#10b981] shadow-[0_0_10px_#10b981]"
                       )}
                       style={{
-                        width: isAnimationComplete ? `${countdownProgress}%` : "0%",
-                        opacity: isAnimationComplete && countdownProgress > 0 ? 1 : 0,
+                        width: "0%",
+                        opacity: 0,
                         transition: "opacity 200ms ease",
                       }}
                     >
                       {/* Leading photon spark at the tip of the beam (centered, no left clipping, smooth fade) */}
                       <div
+                        ref={sparkRef}
                         className={cn(
                           "absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-1.5 h-1.5 rounded-full pointer-events-none will-change-[opacity,transform]",
                           isPaused
                             ? "bg-amber-200 shadow-[0_0_6px_#f59e0b,0_0_10px_#f59e0b]"
-                            : "bg-white shadow-[0_0_6px_#00e599,0_0_12px_#00e599]"
+                            : "bg-white shadow-[0_0_6px_#10b981,0_0_12px_#10b981]"
                         )}
                         style={{
-                          opacity: isAnimationComplete && countdownProgress > 1.5 && countdownProgress < 98.5 ? 1 : 0,
+                          opacity: 0,
                           transition: "opacity 250ms ease",
                         }}
                       />
@@ -425,7 +438,7 @@ export const CardStackText = forwardRef<CardStackTextHandle, CardStackTextProps>
                           <span
                             className={cn(
                               "text-[11px] sm:text-xs font-mono tracking-wider font-semibold uppercase leading-5 select-none",
-                              lineItem.isResult ? "text-[#00e599]" : "text-white/50"
+                              lineItem.isResult ? "text-[#10b981]" : "text-white/50"
                             )}
                           >
                             <AnimatedLetterText
@@ -469,13 +482,13 @@ export const CardStackText = forwardRef<CardStackTextHandle, CardStackTextProps>
                   )}
 
                   {/* Result Badge - Letter by Letter with Glowing Dot */}
-                  <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-none border border-[#00e599]/40 bg-[#00e599]/10 text-[#00e599] font-mono text-xs sm:text-sm tracking-wider uppercase font-semibold max-w-fit">
+                  <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-none border border-[#10b981]/40 bg-[#10b981]/10 text-[#10b981] font-mono text-xs sm:text-sm tracking-wider uppercase font-semibold max-w-fit">
                     <span
-                      className="w-2 h-2 rounded-full bg-[#00e599] transition-opacity duration-300"
+                      className="w-2 h-2 rounded-full bg-[#10b981] transition-opacity duration-300"
                       style={{
                         opacity: isActive ? 1 : 0,
                         transitionDelay: `${schedule.resultBadgeStart}ms`,
-                        boxShadow: isActive ? "0 0 10px #00e599" : "none",
+                        boxShadow: isActive ? "0 0 10px #10b981" : "none",
                       }}
                     />
                     <AnimatedLetterText

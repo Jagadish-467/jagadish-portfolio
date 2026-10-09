@@ -1,19 +1,15 @@
 /* ==========================================================================
-   GLOBAL LEFT NAVIGATION DOCK (DARKMODE ONLY)
-   - Position: Fixed on the Left Side
-   - Capsule/Pill Border with Glassmorphism
-   - Only appears in darkmode (hides automatically in lightmode / About section)
-   - Contains Hero, About, Hackathons, and Contact navigation icons
+   GLOBAL LEFT NAVIGATION DOCK (SYMMETRICAL DIFFERENCE BLEND)
+   - Position: Fixed on the Left Side (Symmetrical with SocialDock)
+   - Capsule/Pill Border with Difference Inversion
+   - Works flawlessly on dark and light backgrounds with zero color flicker
    ========================================================================== */
 
 .global-nav-dock {
   position: fixed;
   left: 2.5rem;
   top: 50%;
-  transform: translateY(-50%) translateX(-160px);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,45 +17,25 @@
   padding: 0.85rem 0.6rem;
   border-radius: 9999px;
   border: 1.5px solid rgba(255, 255, 255, 0.45);
-  background: rgba(18, 18, 22, 0.65);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 9999;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.45s ease,
-              border-color 0.3s ease,
-              background 0.3s ease,
-              box-shadow 0.3s ease;
+  mix-blend-mode: difference;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
   will-change: transform, opacity;
   user-select: none;
 }
 
-/* Dark mode active state (slides in from left to its exact position) */
-.global-nav-dock.nav-dock-visible {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(-50%) translateX(0) !important;
-  pointer-events: auto !important;
-}
-
-/* Light mode state (slides out to the left to hide) */
-.global-nav-dock.nav-dock-hidden {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transform: translateY(-50%) translateX(-160px) !important;
-  pointer-events: none !important;
-}
-
 .global-nav-dock:hover {
   border-color: rgba(255, 255, 255, 0.8);
-  background: rgba(25, 25, 30, 0.8);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.35);
 }
 
 .nav-dock-item {
-  color: #a1a1aa;
+  color: #ffffff;
   width: 36px;
   height: 36px;
   display: flex;
@@ -68,52 +44,69 @@
   border-radius: 50%;
   position: relative;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-              color 0.2s ease,
-              background-color 0.2s ease;
+              background-color 0.2s ease,
+              opacity 0.2s ease;
   cursor: pointer;
   background: transparent;
   border: none;
   outline: none;
+  opacity: 0.55;
+  z-index: 2;
+}
+
+.nav-dock-item:hover,
+.nav-dock-item.nav-dock-item-active {
+  opacity: 1;
 }
 
 .nav-dock-item:hover {
-  transform: scale(1.18);
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.12);
+  transform: scale(1.16);
 }
 
-/* Active section styling */
 .nav-dock-item.nav-dock-item-active {
-  color: #10b981;
-  background-color: rgba(16, 185, 129, 0.14);
+  transform: scale(1.05);
 }
 
-.nav-dock-item.nav-dock-item-active::after {
-  content: '';
+/* Smooth Gliding Active Indicator Pill */
+.nav-dock-active-pill {
   position: absolute;
-  left: -4px;
+  left: 0.5rem;
+  right: 0.5rem;
+  top: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
+  will-change: transform;
+}
+
+.nav-dock-pip {
+  position: absolute;
+  left: -9px;
   top: 50%;
   transform: translateY(-50%);
-  width: 3px;
-  height: 12px;
+  width: 3.5px;
+  height: 14px;
   border-radius: 9999px;
-  background-color: #10b981;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.95), 0 0 5px #10b981;
 }
 
 /* Tooltip floating to the right of the button */
 .nav-dock-tooltip {
   position: absolute;
-  left: calc(100% + 12px);
+  left: calc(100% + 14px);
   top: 50%;
   transform: translateY(-50%) translateX(-6px);
-  background: rgba(12, 12, 14, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #000000;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.08em;
   padding: 4px 10px;
   border-radius: 4px;
@@ -121,7 +114,7 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   z-index: 10000;
 }
 
@@ -133,7 +126,7 @@
 .nav-dock-separator {
   width: 16px;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.25);
   margin: 0.15rem 0;
 }
 

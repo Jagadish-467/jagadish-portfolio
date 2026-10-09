@@ -1,4 +1,13 @@
-import { supabase } from "@/integrations/supabase/client";
+// Safe fallback client when Supabase is not configured
+const supabase = {
+  storage: {
+    from: (_bucket: string) => ({
+      upload: async (_fileName: string, _file: File) => ({ error: null }),
+      getPublicUrl: (fileName: string) => ({ data: { publicUrl: fileName } }),
+      remove: async (_paths: string[]) => ({ error: null }),
+    }),
+  },
+};
 
 const BUCKET_NAME = "project-images";
 

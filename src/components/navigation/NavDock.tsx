@@ -1,14 +1,20 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import './NavDock.css';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollToPlugin);
+}
 
 interface NavDockProps {
   isLoaded?: boolean;
 }
 
 // --------------------------------------------------------
-// MAGNETIC BUTTON COMPONENT (Smooth Pull Effect)
+// MAGNETIC BUTTON COMPONENT (Smooth Spring Physics Matching SocialDock)
 // --------------------------------------------------------
-const Magnetic: React.FC<{ children: React.ReactElement; strength?: number }> = ({ children, strength = 18 }) => {
+const Magnetic: React.FC<{ children: React.ReactElement; strength?: number }> = ({ children, strength = 20 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -18,14 +24,22 @@ const Magnetic: React.FC<{ children: React.ReactElement; strength?: number }> = 
     const x = clientX - (left + width / 2);
     const y = clientY - (top + height / 2);
 
-    ref.current.style.transform = `translate(${(x / width) * strength}px, ${(y / height) * strength}px)`;
-    ref.current.style.transition = 'transform 0.15s ease-out';
+    gsap.to(ref.current, {
+      x: (x / width) * strength,
+      y: (y / height) * strength,
+      duration: 0.6,
+      ease: 'power3.out',
+    });
   };
 
   const handleMouseLeave = () => {
     if (!ref.current) return;
-    ref.current.style.transform = 'translate(0px, 0px)';
-    ref.current.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+    gsap.to(ref.current, {
+      x: 0,
+      y: 0,
+      duration: 1,
+      ease: 'elastic.out(1, 0.3)',
+    });
   };
 
   return (
@@ -107,30 +121,65 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 // --------------------------------------------------------
+// GLOBAL LEFT NAVIGATION DOCK (Persistent across all sections)
 // --------------------------------------------------------
-// GLOBAL LEFT NAVIGATION DOCK
-// Panel 1 (hero): Visible
-// Panel 2 (about): Hidden
-// Panel 3 (hackathons) to Panel 4 (projects): Keep left dock
-// Panel 5 (skills): Hide left dock
-// Panel 6 (contact): Appear left dock
-// --------------------------------------------------------
-const PANEL_VISIBILITY: Record<string, boolean> = {
-  hero: true,        // 1st panel: visible
-  about: false,      // 2nd panel: hidden
-  hackathons: true,  // 3rd panel: visible (keep left dock)
-  projects: true,    // 4th panel: visible (keep left dock)
-  skills: false,     // 5th panel: hidden (hide it in 5th panel)
-  contact: true,     // 6th panel: visible (appear in 6th panel)
-};
 
 export default function NavDock({ isLoaded = true }: NavDockProps) {
-  const [activeSection, setActiveSection] = useState<string>('hero');
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  if (!isLoaded) return null;
 
-  // Track active section and panel visibility based on viewport
+  const [activeSection, setActiveSection] = useState<string>('hero');
+  const dockRef = useRef<HTMLElement>(null);
+  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [pillStyle, setPillStyle] = useState<{ top: number; height: number; opacity: number }>({
+    top: 0,
+    height: 36,
+    opacity: 0,
+  });
+
+  // Synchronized Spring Entrance (Matching SocialDock)
   useEffect(() => {
-    const handleScroll = () => {
+    if (!isLoaded || !dockRef.current) return;
+
+    gsap.fromTo(
+      dockRef.current,
+      { opacity: 0, yPercent: -50, y: -40 },
+      {
+        opacity: 1,
+        yPercent: -50,
+        y: 0,
+        duration: 0.9,
+        ease: 'back.out(1.5)',
+        delay: 0.2,
+        clearProps: 'transform',
+      }
+    );
+  }, [isLoaded]);
+
+  // Update sliding pill position whenever active section changes
+  useEffect(() => {
+    const activeIndex = NAV_ITEMS.findIndex((item) => item.id === activeSection);
+    const activeBtn = buttonRefs.current[activeIndex];
+    const dockEl = dockRef.current;
+
+    if (activeBtn && dockEl) {
+      const btnRect = activeBtn.getBoundingClientRect();
+      const dockRect = dockEl.getBoundingClientRect();
+      const relativeTop = btnRect.top - dockRect.top;
+
+      setPillStyle({
+        top: relativeTop,
+        height: btnRect.height,
+        opacity: 1,
+      });
+    }
+  }, [activeSection]);
+
+  // Track active section based on viewport
+  useEffect(() => {
+    let rafId: number | null = null;
+
+    const checkScroll = () => {
+      rafId = null;
       const windowHeight = window.innerHeight;
       const dockY = windowHeight * 0.5; // Dock is vertically centered at 50%
 
@@ -163,14 +212,20 @@ export default function NavDock({ isLoaded = true }: NavDockProps) {
       }
 
       setActiveSection(detectedActive);
-      setIsVisible(PANEL_VISIBILITY[detectedActive] ?? false);
+    };
+
+    const handleScroll = () => {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(checkScroll);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleScroll);
-    handleScroll();
+    checkScroll();
 
     return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
@@ -178,24 +233,48 @@ export default function NavDock({ isLoaded = true }: NavDockProps) {
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (!element) return;
+
+    setActiveSection(id);
+
+    const targetY = element.getBoundingClientRect().top + window.scrollY;
+
+    gsap.to(window, {
+      duration: 1.0,
+      scrollTo: { y: targetY, autoKill: false },
+      ease: 'power3.inOut',
+      overwrite: 'auto',
+    });
   };
 
   return (
     <aside
+      ref={dockRef}
       aria-label="Section navigation dock"
-      className={`global-nav-dock ${isLoaded && isVisible ? 'nav-dock-visible' : 'nav-dock-hidden'}`}
+      className="global-nav-dock pointer-events-auto"
     >
+      {/* Smooth Gliding Active Indicator Pill */}
+      <div
+        className="nav-dock-active-pill"
+        style={{
+          transform: `translateY(${pillStyle.top}px)`,
+          height: `${pillStyle.height}px`,
+          opacity: pillStyle.opacity,
+        }}
+        aria-hidden="true"
+      >
+        <div className="nav-dock-pip" />
+      </div>
+
       {NAV_ITEMS.map((item, index) => {
         const isActive = activeSection === item.id;
 
         return (
           <React.Fragment key={item.id}>
             {index > 0 && <div className="nav-dock-separator" />}
-            <Magnetic strength={16}>
+            <Magnetic strength={20}>
               <button
+                ref={(el) => (buttonRefs.current[index] = el)}
                 type="button"
                 onClick={() => scrollToSection(item.id)}
                 className={`nav-dock-item ${isActive ? 'nav-dock-item-active' : ''}`}
