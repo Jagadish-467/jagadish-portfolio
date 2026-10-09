@@ -388,6 +388,7 @@ export default function ProjectsSection() {
           <>
             <div className="preview-img-wrapper">
               <img 
+                key={activePreview.id}
                 src={activePreview.previewImage} 
                 alt={activePreview.title}
                 className="preview-img"
