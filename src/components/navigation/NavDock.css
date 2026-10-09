@@ -14,7 +14,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.85rem 0.6rem;
+  padding: 0.85rem 0.65rem;
   border-radius: 9999px;
   border: 1.5px solid rgba(255, 255, 255, 0.45);
   background: rgba(255, 255, 255, 0.04);
@@ -70,10 +70,10 @@
 /* Smooth Gliding Active Indicator Pill */
 .nav-dock-active-pill {
   position: absolute;
-  left: 0.5rem;
-  right: 0.5rem;
+  left: 0.65rem;
+  width: 36px;
   top: 0;
-  border-radius: 9999px;
+  border-radius: 50%;
   background: rgba(255, 255, 255, 0.22);
   pointer-events: none;
   z-index: 1;
@@ -85,14 +85,14 @@
 
 .nav-dock-pip {
   position: absolute;
-  left: -9px;
+  left: -4px;
   top: 50%;
   transform: translateY(-50%);
-  width: 3.5px;
-  height: 14px;
+  width: 3px;
+  height: 12px;
   border-radius: 9999px;
   background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.95), 0 0 5px #10b981;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.95), 0 0 6px #10b981;
 }
 
 /* Tooltip floating to the right of the button */
@@ -141,6 +141,17 @@
   .nav-dock-item {
     width: 32px;
     height: 32px;
+  }
+
+  .nav-dock-active-pill {
+    left: 0.45rem;
+    width: 32px;
+  }
+
+  .nav-dock-pip {
+    left: -3px;
+    width: 2.5px;
+    height: 10px;
   }
 
   .nav-dock-separator {
