@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { ArrowUpRight, Github, Instagram, Linkedin, Code2 } from "lucide-react";
 import { Magnetic } from "./Magnetic";
 
@@ -42,17 +42,17 @@ function PlatformCard({ p }: { p: (typeof platforms)[number] }) {
       data-cursor="link"
       className="contact-platform-card group"
     >
-      <div className="flex items-start justify-between gap-3">
-        <p.Icon className="w-5 h-5 text-gray-700 transition-colors group-hover:text-[#10b981]" />
-        <ArrowUpRight className="w-4 h-4 text-gray-400 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#10b981]" />
+      <div className="flex items-start justify-between gap-2">
+        <p.Icon className="w-4 h-4 text-gray-700 transition-colors group-hover:text-[#10b981]" />
+        <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#10b981]" />
       </div>
-      <h3 className="mt-3 font-sans text-base font-bold text-black group-hover:text-[#10b981] transition-colors">
+      <h3 className="mt-1.5 font-sans text-sm font-bold text-black group-hover:text-[#10b981] transition-colors leading-tight">
         {p.title}
       </h3>
-      <p className="truncate text-xs font-mono text-gray-500 mt-0.5">
+      <p className="truncate text-[11px] font-mono text-gray-500 mt-0.5">
         {p.handle}
       </p>
-      <p className="mt-3 text-[10px] font-mono tracking-wider text-gray-400 uppercase">
+      <p className="mt-1.5 text-[9px] font-mono tracking-wider text-gray-400 uppercase">
         {p.tag}
       </p>
     </a>
@@ -61,7 +61,7 @@ function PlatformCard({ p }: { p: (typeof platforms)[number] }) {
 
 export function PlatformMatrix() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1">
+    <div className="grid grid-cols-2 gap-2.5 flex-1">
       {platforms.map((p) => (
         <Magnetic key={p.title} strength={0.08} className="h-full">
           <PlatformCard p={p} />

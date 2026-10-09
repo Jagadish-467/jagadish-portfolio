@@ -23,8 +23,8 @@ export function NodeStatus() {
   }, []);
 
   return (
-    <div className="contact-light-panel p-5">
-      <div className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+    <div className="contact-light-panel p-3.5 sm:p-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
         <div className="flex items-center gap-2 text-gray-700">
           <span className="w-2 h-2 rounded-full bg-[#10b981] animate-ping" />
           <span className="font-bold text-black uppercase">NODE ACTIVE</span>
@@ -32,18 +32,18 @@ export function NodeStatus() {
         </div>
 
         <div className="flex items-center gap-3 text-gray-600">
-          <span className="flex items-center gap-1.5 font-bold text-black bg-black/[0.04] px-2.5 py-1 rounded border border-black/10">
-            <Clock className="w-3.5 h-3.5 text-[#10b981]" />
+          <span className="flex items-center gap-1.5 font-bold text-black bg-black/[0.04] px-2 py-0.5 rounded border border-black/10 text-[11px]">
+            <Clock className="w-3 h-3 text-[#10b981]" />
             {time || "--:--:--"} IST
           </span>
-          <span className="flex items-center gap-1 text-gray-500">
-            <MapPin className="w-3.5 h-3.5 text-[#10b981]" />
+          <span className="flex items-center gap-1 text-gray-500 text-[11px]">
+            <MapPin className="w-3 h-3 text-[#10b981]" />
             VIZIANAGARAM, INDIA
           </span>
         </div>
       </div>
 
-      <div className="mt-3 pt-3 border-t border-black/5 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-gray-500">
+      <div className="mt-2.5 pt-2 border-t border-black/5 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-gray-500">
         <span>AVAILABILITY: SUMMER 2025/2026 ROLES &amp; RESEARCH GRANTS</span>
         <span className="text-black font-semibold">ALL TRANSMISSIONS END-TO-END VERIFIED</span>
       </div>

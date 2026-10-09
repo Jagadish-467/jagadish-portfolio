@@ -35,7 +35,7 @@ export function Magnetic({ children, className, strength = 0.25 }: MagneticProps
   );
 }
 
-/** Corner crosshair marks for architectural panels. */
+/** Corner crosshair marks for architectural panels (Visible in light mode). */
 export function Crosshairs() {
   return (
     <>
@@ -48,7 +48,7 @@ export function Crosshairs() {
         <span
           key={pos}
           aria-hidden
-          className={`pointer-events-none absolute ${pos} font-mono text-sm leading-none text-white/20 select-none`}
+          className={`pointer-events-none absolute ${pos} font-mono text-sm leading-none text-black/30 select-none`}
         >
           +
         </span>

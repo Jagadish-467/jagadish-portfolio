@@ -7,36 +7,29 @@ import "./Contact.css";
 
 export function ContactSection() {
   return (
-    <section 
-      id="contact" 
+    <section
+      id="contact"
       className="portfolio-section-anchor contact-section-root"
       data-theme="light"
     >
       {/* Background Architectural Dot Grid */}
       <div className="contact-dot-grid" />
 
-      {/* Massive Awwwards Parallax Stroke Watermark on the Right (Matching MANIFESTO) */}
-      <div className="contact-watermark absolute top-[8%] right-[-2vw] pointer-events-none select-none z-0 opacity-[0.04]">
-        <h1 
-          className="text-[28vw] md:text-[22vw] lg:text-[18vw] font-black leading-none tracking-tight select-none" 
-          style={{ 
-            writingMode: 'vertical-rl', 
-            WebkitTextStroke: '2px #000000', 
-            color: 'transparent' 
-          }}
-        >
+      {/* Massive Awwwards Parallax Stroke Watermark on the Right */}
+      <div className="contact-watermark">
+        <h1 className="contact-watermark-text select-none">
           CONTACT
         </h1>
       </div>
 
       {/* Awwwards Rotating Typographic Stamp on Top-Right */}
-      <div className="absolute top-24 right-8 lg:right-16 z-20 pointer-events-none hidden md:block">
-        <div className="relative w-36 h-36 opacity-85">
+      <div className="absolute top-8 right-6 lg:right-12 z-20 pointer-events-none hidden md:block">
+        <div className="relative w-28 h-28 opacity-80">
           <svg viewBox="0 0 120 120" className="w-full h-full overflow-visible animate-spin" style={{ animationDuration: '28s' }}>
             <path id="contactCirclePath" d="M 60, 60 m -42, 0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" fill="transparent" />
             <text className="text-[7.2px] font-mono tracking-[0.08em] fill-black font-semibold uppercase">
               <textPath href="#contactCirclePath" textLength="263" lengthAdjust="spacing">
-                • 05 TRANSMISSION • PONNADA JAGADISH KUMAR • DIRECT NETWORK • 
+                • 05 TRANSMISSION • PONNADA JAGADISH KUMAR • DIRECT NETWORK •
               </textPath>
             </text>
           </svg>
@@ -52,31 +45,31 @@ export function ContactSection() {
       <div className="contact-crosshair contact-crosshair-bl" />
       <div className="contact-crosshair contact-crosshair-br" />
 
-      <div className="relative z-10 mx-auto max-w-7xl w-full flex-1 flex flex-col justify-between">
+      <div className="relative z-10 mx-auto max-w-7xl w-full flex-1 flex flex-col justify-between my-auto">
         {/* 2-Column Responsive Layout: Information on Left, Contact Form fully fitting Right Side */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-stretch my-auto">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-6 lg:gap-8 items-stretch my-auto">
+
           {/* Left Column: Section Header & Direct Channels */}
-          <div className="flex flex-col justify-between gap-6">
+          <div className="flex flex-col justify-between gap-3.5">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/[0.04] border border-black/10 mb-4">
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/[0.04] border border-black/10 mb-2">
                 <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
-                <span className="font-mono text-xs font-bold tracking-widest text-black/70 uppercase">
+                <span className="font-mono text-[11px] font-bold tracking-widest text-black/70 uppercase">
                   05 // TRANSMISSION &amp; DIRECT NETWORK
                 </span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-black uppercase leading-[1.05]">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-black uppercase leading-[1.05]">
                 LET&apos;S BUILD SOMETHING EXTRAORDINARY.
               </h2>
 
-              <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed font-sans max-w-xl">
+              <p className="mt-2 text-xs sm:text-sm text-gray-600 leading-relaxed font-sans max-w-xl">
                 Open for research collaborations, engineering challenges, high-performance distributed systems,
                 and quantum algorithmic developments.
               </p>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2.5">
               <EmailDispatch />
               <PlatformMatrix />
               <NodeStatus />
@@ -90,7 +83,7 @@ export function ContactSection() {
         </div>
 
         {/* Bottom Section Editorial Credits */}
-        <div className="mt-10 pt-6 border-t border-black/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-xs text-gray-500">
+        <div className="mt-5 pt-3 border-t border-black/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono text-[11px] text-gray-500">
           <div>
             PONNADA JAGADISH KUMAR // DESIGNED WITH RIGOR &amp; AESTHETIC INTEGRITY
           </div>
