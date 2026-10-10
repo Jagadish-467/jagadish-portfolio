@@ -85,7 +85,7 @@ export function ContactForm() {
     if (lower === "help") {
       newLogs.push({
         type: "info",
-        text: "AVAILABLE COMMANDS:\n  • status        : View availability, academic minor & location\n  • skills        : Core programming languages & technical domains\n  • projects      : Multi-QPU synthesis, Amazon ML, OFFLAN tunnel\n  • hackathons    : Competitive achievements & national rankings\n  • ping          : Run network latency handshake test\n  • socials       : Direct links to GitHub, LinkedIn, LeetCode, IG\n  • email         : Display direct verified inbox address\n  • send <msg>    : Transmit a direct transmission to Jagadish\n  • whoami        : Current session identity credentials\n  • clear / cls   : Clear terminal logs\n  • form / exit   : Switch to the visual interactive form"
+        text: "AVAILABLE COMMANDS:\n  • status        : View availability, academic minor & location\n  • cv / resume   : View & redirect to verified Technical Curriculum Vitae\n  • skills        : Core programming languages & technical domains\n  • projects      : Multi-QPU synthesis, Amazon ML, OFFLAN tunnel\n  • hackathons    : Competitive achievements & national rankings\n  • ping          : Run network latency handshake test\n  • socials       : Direct links to GitHub, LinkedIn, LeetCode, IG\n  • email         : Display direct verified inbox address\n  • send <msg>    : Transmit a direct transmission to Jagadish\n  • whoami        : Current session identity credentials\n  • clear / cls   : Clear terminal logs\n  • form / exit   : Switch to the visual interactive form"
       });
     } else if (lower === "ping") {
       newLogs.push({
@@ -96,6 +96,15 @@ export function ContactForm() {
       newLogs.push({
         type: "success",
         text: "STATUS: ACTIVE // 3rd Year B.Tech CSE @ Lendi IET (Vizianagaram, India)\nACADEMIC MINOR: Quantum Computing (IBM Qiskit)\nOPEN FOR: Summer 2025/2026 Engineering Roles, Research Collaborations & Grants\nRESPONSE SLA: Under 12 Hours"
+      });
+    } else if (lower === "cv" || lower === "resume") {
+      window.open("/resume.pdf", "_blank", "noopener,noreferrer");
+      newLogs.push({
+        type: "success",
+        text: "DISPATCHING // Opening verified Curriculum Vitae (Ponnada Jagadish Kumar • 2026 Edition)\nURI: /resume.pdf"
+      });
+      toast.info("TECHNICAL CV // 2026 EDITION", {
+        description: "Ponnada Jagadish Kumar • Academic & Engineering Resume"
       });
     } else if (lower === "skills") {
       newLogs.push({
